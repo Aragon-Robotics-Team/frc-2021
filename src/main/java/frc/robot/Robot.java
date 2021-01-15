@@ -6,7 +6,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.subsystems.Drivetrain;
@@ -22,15 +21,11 @@ public class Robot extends TimedRobot {
   // Subsystems:
   public static Drivetrain drivetrain = new Drivetrain();
 
+  // Commands:
+  private ArcadeDrive arcadeDrive;
+
   // OI:
   public static Joystick joystick = new Joystick(Constants.JOYSTICK_PORT);
-
-  private Command m_autonomousCommand;
-
-  // Commands:
-  private Command arcadeDrive;
-
-  private RobotContainer m_robotContainer;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -38,10 +33,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    // Instantiate our RobotContainer. This will perform all our button bindings,
-    // and put our
-    // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();
+    drivetrain.resetEncoder();
   }
 
   /**
@@ -80,21 +72,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
-    // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
-    }
-  }
-
-  /** This function is called periodically during autonomous. */
-  @Override
-  public void autonomousPeriodic() {
+    drivetrain.resetEncoder();
   }
 
   @Override
   public void teleopInit() {
+    drivetrain.resetEncoder();
     arcadeDrive = new ArcadeDrive();
     arcadeDrive.schedule();
   }
