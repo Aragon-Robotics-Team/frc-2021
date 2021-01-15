@@ -24,4 +24,13 @@ public final class Constants {
 
     public static final double SPEED_MULT = 0.6;
     public static final double TURN_MULT = 0.3;
+
+    public static final double TICKS_TO_FEET = 1.0 / 128 * 6 * Math.PI / 12;
+    public static final double KP = 10;
+    public static final double KI = 10;
+    public static final double KD = 10;
+    public static final double I_LIMIT = 1;
+
+    public static final int PID_STOP_TIME = 1;
+    public static final double PID_TIMER_START = 0.05;
 }

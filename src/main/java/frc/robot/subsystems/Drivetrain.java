@@ -3,6 +3,8 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -11,6 +13,7 @@ public class Drivetrain extends SubsystemBase {
     private CANSparkMax rightMotorSlave;
     private CANSparkMax leftMotorMaster;
     private CANSparkMax rightMotorMaster;
+    private Encoder encoder = new Encoder(0, 1, false, EncodingType.k4X);
 
     public Drivetrain() {
         // Create motors
@@ -30,5 +33,13 @@ public class Drivetrain extends SubsystemBase {
 
     public void setRightMotor(double speed) {
         rightMotorMaster.set(speed);
+    }
+
+    public double getEncoderPos() {
+        return encoder.get() * Constants.TICKS_TO_FEET;
+    }
+
+    public void resetEncoder() {
+        encoder.reset();
     }
 }
