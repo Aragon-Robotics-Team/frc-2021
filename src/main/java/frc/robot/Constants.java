@@ -15,6 +15,11 @@ package frc.robot;
  * wherever the constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    
+    //Almost all values are placeholders
+
+   //Constants for ArcadeDrive & PID
+   
     public static final int LEFT_MOTOR_SLAVE = 0;
     public static final int RIGHT_MOTOR_SLAVE = 1;
     public static final int LEFT_MOTOR_MASTER = 2;
@@ -33,4 +38,14 @@ public final class Constants {
 
     public static final int PID_STOP_TIME = 1;
     public static final double PID_TIMER_START = 0.05;
+    
+    //Constants for AutoNav
+    
+    public static final double kS = 1.0;
+    public static final double kV = 1.0;
+    public static final double kA = 1.0;
+
+    public static final double kTrackwidthMeters = 0.69;
+    public static final DifferentialDriveKinematics kDriveKinematics = new DifferentialDriveKinematics(kTrackwidthMeters);
+
 }
