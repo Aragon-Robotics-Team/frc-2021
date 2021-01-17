@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DigitalSource;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
 
 /**
@@ -61,4 +62,21 @@ public final class Constants {
     public static final double MIN_HORIZ_OFFSET = 1.5;
     public static final double KTURNSPEED = 0.4 / 27.0;
     public static final double FINAL_DISTANCE = 9.0 / 12.0; // 9/12 is 9 inches (9/12 feet)
+
+    //Autonav constants
+    public static final double kMaxSpeedMetersPerSecond = 3;
+    public static final double kMaxAccelerationMetersPerSecondSquared = 3;
+    public static final double kRamseteB = 2;
+    public static final double kRamseteZeta = 0.7;
+
+    //placeholder ports
+    public static final double kLeftMotor1Port = 1;
+    public static final double kLeftMotor2Port = 1;
+    public static final double kRightMotor1port = 1;
+    public static final double kRightMotor2port = 1;
+	public static final DigitalSource[] kLeftEncoderPorts = null;
+	public static final DigitalSource kLeftEncoderReversed = null;
+	public static final DigitalSource[] kRightEncoderPorts = null;
+	public static final DigitalSource kRightEncoderReversed = null;
+
 }
