@@ -8,6 +8,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 /**
  * The Limelight subsystem is a light that is lime green. If you look at it at a
@@ -32,5 +33,10 @@ public class Limelight extends SubsystemBase {
     ty = tyEntry.getDouble(0);
     tv = tvEntry.getDouble(0) == 1;
     ta = taEntry.getDouble(0);
+  }
+
+  public double getEstimatedDistance() {
+    // Formula: tan(a1 + a2) = (h2 - h1) / d
+    return (Constants.TARGET_HEIGHT - Constants.MOUNTING_HEIGHT) / Math.tan(Constants.MOUNTING_ANGLE + ty);
   }
 }

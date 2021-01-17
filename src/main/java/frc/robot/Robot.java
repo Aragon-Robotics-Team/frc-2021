@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Limelight;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,6 +21,7 @@ import frc.robot.subsystems.Drivetrain;
 public class Robot extends TimedRobot {
   // Subsystems:
   public static Drivetrain drivetrain = new Drivetrain();
+  public static Limelight limelight = new Limelight();
 
   // Commands:
   private ArcadeDrive arcadeDrive;
@@ -72,10 +74,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    
-    
-    
-    
+
     drivetrain.resetEncoder();
   }
 
