@@ -51,4 +51,14 @@ public final class Constants {
     public static final DifferentialDriveKinematics kDriveKinematics = new DifferentialDriveKinematics(
             kTrackwidthMeters);
 
+    // Limelight
+    public static final double MOUNTING_ANGLE = 0;
+    public static final double MOUNTING_HEIGHT = 1;
+    public static final double TARGET_HEIGHT = 7.0 / 12.0;
+
+    // MoveToCell
+    public static final double KSPEED = 0.6 / 15.0;
+    public static final double MIN_HORIZ_OFFSET = 1.5;
+    public static final double KTURNSPEED = 0.4 / 27.0;
+    public static final double FINAL_DISTANCE = 9.0 / 12.0; // 9/12 is 9 inches (9/12 feet)
 }
