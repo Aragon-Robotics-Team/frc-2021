@@ -41,7 +41,7 @@ public class ArcadeDrive extends CommandBase {
   // Called once after isFinished returns true
   @Override
   public void end(boolean interrupted) {
-    Robot.drivetrain.set(0);
+    Robot.drivetrain.setLeftMotor(0);
     Robot.drivetrain.setRightMotor(0);
   }
 }
