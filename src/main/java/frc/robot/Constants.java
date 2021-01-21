@@ -74,9 +74,8 @@ public final class Constants {
     public static final double kLeftMotor2Port = 1;
     public static final double kRightMotor1port = 1;
     public static final double kRightMotor2port = 1;
-    public static final DigitalSource[] kLeftEncoderPorts = null;
-    public static final DigitalSource kLeftEncoderReversed = null;
-    public static final DigitalSource[] kRightEncoderPorts = null;
-    public static final DigitalSource kRightEncoderReversed = null;
-
+    public static final int[] kLeftEncoderPorts = { 0, 1 };
+    public static final boolean kLeftEncoderReversed = false;
+    public static final int[] kRightEncoderPorts = { 0, 1 };
+    public static final boolean kRightEncoderReversed = true;
 }
