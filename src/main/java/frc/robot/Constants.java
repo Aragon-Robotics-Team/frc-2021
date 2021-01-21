@@ -23,10 +23,10 @@ public final class Constants {
 
     // Constants for ArcadeDrive & PID
 
-    public static final int LEFT_MOTOR_SLAVE = 0;
-    public static final int RIGHT_MOTOR_SLAVE = 1;
-    public static final int LEFT_MOTOR_MASTER = 2;
-    public static final int RIGHT_MOTOR_MASTER = 3;
+    public static final int LEFT_MOTOR_SLAVE = 1;
+    public static final int RIGHT_MOTOR_SLAVE = 5;
+    public static final int LEFT_MOTOR_MASTER = 8;
+    public static final int RIGHT_MOTOR_MASTER = 2;
 
     public static final int JOYSTICK_PORT = 4;
 
@@ -63,20 +63,20 @@ public final class Constants {
     public static final double KTURNSPEED = 0.4 / 27.0;
     public static final double FINAL_DISTANCE = 9.0 / 12.0; // 9/12 is 9 inches (9/12 feet)
 
-    //Autonav constants
+    // Autonav constants
     public static final double kMaxSpeedMetersPerSecond = 3;
     public static final double kMaxAccelerationMetersPerSecondSquared = 3;
     public static final double kRamseteB = 2;
     public static final double kRamseteZeta = 0.7;
 
-    //placeholder ports
+    // placeholder ports
     public static final double kLeftMotor1Port = 1;
     public static final double kLeftMotor2Port = 1;
     public static final double kRightMotor1port = 1;
     public static final double kRightMotor2port = 1;
-	public static final DigitalSource[] kLeftEncoderPorts = null;
-	public static final DigitalSource kLeftEncoderReversed = null;
-	public static final DigitalSource[] kRightEncoderPorts = null;
-	public static final DigitalSource kRightEncoderReversed = null;
+    public static final DigitalSource[] kLeftEncoderPorts = null;
+    public static final DigitalSource kLeftEncoderReversed = null;
+    public static final DigitalSource[] kRightEncoderPorts = null;
+    public static final DigitalSource kRightEncoderReversed = null;
 
 }
