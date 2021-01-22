@@ -22,10 +22,10 @@ public final class Constants {
 
     // Constants for ArcadeDrive & PID
 
-    public static final int LEFT_MOTOR_SLAVE = 0;
-    public static final int RIGHT_MOTOR_SLAVE = 1;
-    public static final int LEFT_MOTOR_MASTER = 2;
-    public static final int RIGHT_MOTOR_MASTER = 3;
+    public static final int LEFT_MOTOR_SLAVE = 1;
+    public static final int RIGHT_MOTOR_SLAVE = 5;
+    public static final int LEFT_MOTOR_MASTER = 8;
+    public static final int RIGHT_MOTOR_MASTER = 2;
 
     public static final int JOYSTICK_PORT = 4;
 
@@ -62,26 +62,26 @@ public final class Constants {
     public static final double KTURNSPEED = 0.4 / 27.0;
     public static final double FINAL_DISTANCE = 9.0 / 12.0; // 9/12 is 9 inches (9/12 feet)
 
-    //Autonav constants
+    // Autonav constants
     public static final double kMaxSpeedMetersPerSecond = 3;
     public static final double kMaxAccelerationMetersPerSecondSquared = 3;
     public static final double kRamseteB = 2;
     public static final double kRamseteZeta = 0.7;
 
-    //placeholder   
+    // placeholder ports
     public static final double kLeftMotor1Port = 1;
     public static final double kLeftMotor2Port = 1;
     public static final double kRightMotor1port = 1;
     public static final double kRightMotor2port = 1;
-	public static final int[] kLeftEncoderPorts = null;
-	public static final boolean kLeftEncoderReversed = false;
-	public static final int[] kRightEncoderPorts = null;
-    public static final boolean kRightEncoderReversed = true;
-	public static final double ksVolts = 0;
-	public static double kEncoderDistancePerPulse = 1;
-	public static double kaVoltSecondsSquaredPerMeter;
-	public static double kPDriveVel;
-	public static double kvVoltSecondsPerMeter;
-    
 
+    public static final int[] kLeftEncoderPorts = { 0, 1 };
+    public static final boolean kLeftEncoderReversed = false;
+    public static final int[] kRightEncoderPorts = { 0, 1 };
+    public static final boolean kRightEncoderReversed = true;
+    public static final double ksVolts = 0;
+    public static double kEncoderDistancePerPulse = 1;
+    public static double kaVoltSecondsSquaredPerMeter;
+    public static double kPDriveVel;
+    public static double kvVoltSecondsPerMeter;
+   
 }
