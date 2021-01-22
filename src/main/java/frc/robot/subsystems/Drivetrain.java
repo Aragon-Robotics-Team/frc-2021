@@ -37,7 +37,7 @@ public class Drivetrain extends SubsystemBase {
 
     private final Gyro m_gyro = new ADXRS450_Gyro();
 
-    //private final DifferentialDriveOdometry m_odometry;
+    // private final DifferentialDriveOdometry m_odometry;
 
     // Add following
     // leftMotorSlave.follow(leftMotorMaster);
