@@ -62,6 +62,11 @@ public final class Constants {
     public static final double KTURNSPEED = 0.4 / 27.0;
     public static final double FINAL_DISTANCE = 9.0 / 12.0; // 9/12 is 9 inches (9/12 feet)
 
+    // finclell
+    public static final double LOWER_BOUND = -25.0;
+    public static final double UPPER_BOUND = 25.0;
+    public static final double CERTAIN_SPEED = 0.6;
+
     // INTAKEEEE
     // arm
     public static final int solenoidLeftFwd = 0;
@@ -69,10 +74,11 @@ public final class Constants {
     public static final int solenoidRightFwd = 1;
     public static final int solenoidRightRev = 6;
     public static final int pcmId = 2;
-    // roller
+    // rollerrrrrr
     public static final int ROLLER_MOTOR = 4;
     public static final int VOLTS_FULL = 12;
     public static final int RAMP_TIME = 1;
+    public static final int ROLL_TIME = 2;
 
     // Autonav constants
     public static final double kMaxSpeedMetersPerSecond = 3;
