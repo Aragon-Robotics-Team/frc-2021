@@ -5,16 +5,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.subsystems.Intake.Intake;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class GalacticSearch extends SequentialCommandGroup {
-  /** Creates a new GalacticSearch. */
-  public GalacticSearch() {
+public class CollectCell extends SequentialCommandGroup {
+  /** Creates a new CollectCell. */
+  public CollectCell() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(// FindNextCell new MoveToCell()
-        new FindCell(), new MoveToCell(), new CollectCell());
+    addCommands(Intake.arm.armOut(), new RollIntake(), Intake.arm.armIn());
   }
 }

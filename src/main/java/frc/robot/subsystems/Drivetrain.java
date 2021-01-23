@@ -54,7 +54,7 @@ public class Drivetrain extends SubsystemBase {
 
         resetEncoder();
         m_odometry = new DifferentialDriveOdometry(m_gyro.getRotation2d());
-        
+
     }
 
     public void setLeftMotor(double speed) {
@@ -67,38 +67,37 @@ public class Drivetrain extends SubsystemBase {
 
     @Override
     public void periodic() {
-      // Update the odometry in the periodic block
-      m_odometry.update(m_gyro.getRotation2d(), m_leftEncoder.getDistance(),
-                        m_rightEncoder.getDistance());
+        // Update the odometry in the periodic block
+        m_odometry.update(m_gyro.getRotation2d(), m_leftEncoder.getDistance(), m_rightEncoder.getDistance());
     }
 
     public Pose2d getPose() {
         return m_odometry.getPoseMeters();
-      }
-    
+    }
+
     public DifferentialDriveWheelSpeeds getWheelSpeeds() {
         return new DifferentialDriveWheelSpeeds(m_leftEncoder.getRate(), m_rightEncoder.getRate());
-      }
+    }
 
     public void resetEncoders() {
         m_leftEncoder.reset();
         m_rightEncoder.reset();
-      }
+    }
 
     public void resetOdometry(Pose2d pose) {
         resetEncoders();
         m_odometry.resetPosition(pose, m_gyro.getRotation2d());
-      }
+    }
 
     public void arcadeDrive(double fwd, double rot) {
         m_drive.arcadeDrive(fwd, rot);
-      }
-    
+    }
+
     public void tankDriveVolts(double leftVolts, double rightVolts) {
         m_leftMotors.setVoltage(leftVolts);
         m_rightMotors.setVoltage(-rightVolts);
         m_drive.feed();
-      }
+    }
 
     public double getAverageEncoderDistance() {
         return (m_leftEncoder.getDistance() + m_rightEncoder.getDistance()) / 2.0;
@@ -134,6 +133,6 @@ public class Drivetrain extends SubsystemBase {
 
     public void resetEncoder() {
         encoder.reset();
-    
+
     }
 }
