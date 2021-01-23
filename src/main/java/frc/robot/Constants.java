@@ -91,8 +91,15 @@ public final class Constants {
     public static final double kLeftMotor2Port = 1;
     public static final double kRightMotor1port = 1;
     public static final double kRightMotor2port = 1;
+
     public static final int[] kLeftEncoderPorts = { 0, 1 };
     public static final boolean kLeftEncoderReversed = false;
     public static final int[] kRightEncoderPorts = { 0, 1 };
     public static final boolean kRightEncoderReversed = true;
+    public static final double ksVolts = 0;
+    public static double kEncoderDistancePerPulse = 1;
+    public static double kaVoltSecondsSquaredPerMeter;
+    public static double kPDriveVel;
+    public static double kvVoltSecondsPerMeter;
+   
 }
