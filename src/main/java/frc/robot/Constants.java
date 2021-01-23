@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.DigitalSource;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
 
 /**
@@ -62,6 +61,13 @@ public final class Constants {
     public static final double MIN_HORIZ_OFFSET = 1.5;
     public static final double KTURNSPEED = 0.4 / 27.0;
     public static final double FINAL_DISTANCE = 9.0 / 12.0; // 9/12 is 9 inches (9/12 feet)
+
+    // INTAKEEEE
+    public static final int solenoidLeftFwd = 0;
+    public static final int solenoidLeftRev = 7;
+    public static final int solenoidRightFwd = 1;
+    public static final int solenoidRightRev = 6;
+    public static final int pcmId = 2;
 
     // Autonav constants
     public static final double kMaxSpeedMetersPerSecond = 3;
