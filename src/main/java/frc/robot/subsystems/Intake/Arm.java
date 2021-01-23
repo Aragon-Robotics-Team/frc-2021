@@ -14,10 +14,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Arm extends SubsystemBase {
-  public DoubleSolenoid solenoidLeft;
-  public DoubleSolenoid solenoidRight;
+  private DoubleSolenoid solenoidLeft;
+  private DoubleSolenoid solenoidRight;
 
-  public static enum Position {
+  private static enum Position {
     In, Out
   }
 
@@ -30,11 +30,6 @@ public class Arm extends SubsystemBase {
 
     posMap.put(Position.In, Value.kReverse);
     posMap.put(Position.Out, Value.kForward);
-  }
-
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
   }
 
   public void set(Position pos) {

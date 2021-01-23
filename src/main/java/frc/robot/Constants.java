@@ -63,11 +63,16 @@ public final class Constants {
     public static final double FINAL_DISTANCE = 9.0 / 12.0; // 9/12 is 9 inches (9/12 feet)
 
     // INTAKEEEE
+    // arm
     public static final int solenoidLeftFwd = 0;
     public static final int solenoidLeftRev = 7;
     public static final int solenoidRightFwd = 1;
     public static final int solenoidRightRev = 6;
     public static final int pcmId = 2;
+    // roller
+    public static final int ROLLER_MOTOR = 4;
+    public static final int VOLTS_FULL = 12;
+    public static final int RAMP_TIME = 1;
 
     // Autonav constants
     public static final double kMaxSpeedMetersPerSecond = 3;
