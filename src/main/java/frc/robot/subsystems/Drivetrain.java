@@ -9,10 +9,12 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveOdometry;
+import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
 
 //Auto nav improts imports
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.geometry.Pose2d;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -37,7 +39,7 @@ public class Drivetrain extends SubsystemBase {
 
     private final Gyro m_gyro = new ADXRS450_Gyro();
 
-    //private final DifferentialDriveOdometry m_odometry;
+    private final DifferentialDriveOdometry m_odometry;
 
     // Add following
     // leftMotorSlave.follow(leftMotorMaster);
@@ -46,6 +48,13 @@ public class Drivetrain extends SubsystemBase {
     public Drivetrain() {
         leftMotorSlave.setInverted(true);
         leftMotorMaster.setInverted(true);
+
+        m_leftEncoder.setDistancePerPulse(Constants.kEncoderDistancePerPulse);
+        m_rightEncoder.setDistancePerPulse(Constants.kEncoderDistancePerPulse);
+
+        resetEncoder();
+        m_odometry = new DifferentialDriveOdometry(m_gyro.getRotation2d());
+
     }
 
     public void setLeftMotor(double speed) {
@@ -56,11 +65,74 @@ public class Drivetrain extends SubsystemBase {
         rightMotorMaster.set(speed);
     }
 
+    @Override
+    public void periodic() {
+        // Update the odometry in the periodic block
+        m_odometry.update(m_gyro.getRotation2d(), m_leftEncoder.getDistance(), m_rightEncoder.getDistance());
+    }
+
+    public Pose2d getPose() {
+        return m_odometry.getPoseMeters();
+    }
+
+    public DifferentialDriveWheelSpeeds getWheelSpeeds() {
+        return new DifferentialDriveWheelSpeeds(m_leftEncoder.getRate(), m_rightEncoder.getRate());
+    }
+
+    public void resetEncoders() {
+        m_leftEncoder.reset();
+        m_rightEncoder.reset();
+    }
+
+    public void resetOdometry(Pose2d pose) {
+        resetEncoders();
+        m_odometry.resetPosition(pose, m_gyro.getRotation2d());
+    }
+
+    public void arcadeDrive(double fwd, double rot) {
+        m_drive.arcadeDrive(fwd, rot);
+    }
+
+    public void tankDriveVolts(double leftVolts, double rightVolts) {
+        m_leftMotors.setVoltage(leftVolts);
+        m_rightMotors.setVoltage(-rightVolts);
+        m_drive.feed();
+    }
+
+    public double getAverageEncoderDistance() {
+        return (m_leftEncoder.getDistance() + m_rightEncoder.getDistance()) / 2.0;
+    }
+
+    public Encoder getLeftEncoder() {
+        return m_leftEncoder;
+    }
+
+    public Encoder getRightEncoder() {
+        return m_rightEncoder;
+    }
+
+    public void setMaxOutput(double maxOutput) {
+        m_drive.setMaxOutput(maxOutput);
+    }
+
+    public void zeroHeading() {
+        m_gyro.reset();
+    }
+
+    public double getHeading() {
+        return m_gyro.getRotation2d().getDegrees();
+    }
+
+    public double getTurnRate() {
+        return -m_gyro.getRate();
+    }
+
     public double getEncoderPos() {
         return encoder.get() * Constants.TICKS_TO_FEET;
     }
 
     public void resetEncoder() {
         encoder.reset();
+
     }
 }

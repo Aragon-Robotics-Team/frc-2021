@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.DigitalSource;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
 
 /**
@@ -63,6 +62,24 @@ public final class Constants {
     public static final double KTURNSPEED = 0.4 / 27.0;
     public static final double FINAL_DISTANCE = 9.0 / 12.0; // 9/12 is 9 inches (9/12 feet)
 
+    // finclell
+    public static final double LOWER_BOUND = -25.0;
+    public static final double UPPER_BOUND = 25.0;
+    public static final double CERTAIN_SPEED = 0.6;
+
+    // INTAKEEEE
+    // arm
+    public static final int solenoidLeftFwd = 0;
+    public static final int solenoidLeftRev = 7;
+    public static final int solenoidRightFwd = 1;
+    public static final int solenoidRightRev = 6;
+    public static final int pcmId = 2;
+    // rollerrrrrr
+    public static final int ROLLER_MOTOR = 4;
+    public static final int VOLTS_FULL = 12;
+    public static final int RAMP_TIME = 1;
+    public static final int ROLL_TIME = 2;
+
     // Autonav constants
     public static final double kMaxSpeedMetersPerSecond = 3;
     public static final double kMaxAccelerationMetersPerSecondSquared = 3;
@@ -74,9 +91,15 @@ public final class Constants {
     public static final double kLeftMotor2Port = 1;
     public static final double kRightMotor1port = 1;
     public static final double kRightMotor2port = 1;
-    public static final DigitalSource[] kLeftEncoderPorts = null;
-    public static final DigitalSource kLeftEncoderReversed = null;
-    public static final DigitalSource[] kRightEncoderPorts = null;
-    public static final DigitalSource kRightEncoderReversed = null;
 
+    public static final int[] kLeftEncoderPorts = { 0, 1 };
+    public static final boolean kLeftEncoderReversed = false;
+    public static final int[] kRightEncoderPorts = { 0, 1 };
+    public static final boolean kRightEncoderReversed = true;
+    public static final double ksVolts = 0;
+    public static double kEncoderDistancePerPulse = 1;
+    public static double kaVoltSecondsSquaredPerMeter;
+    public static double kPDriveVel;
+    public static double kvVoltSecondsPerMeter;
+   
 }
