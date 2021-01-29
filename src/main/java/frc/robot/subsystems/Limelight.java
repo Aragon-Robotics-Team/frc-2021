@@ -27,6 +27,8 @@ public class Limelight extends SubsystemBase {
   public boolean tv;
   public double ta;
 
+  public double previousTx;
+
   @Override
   public void periodic() {
     tx = txEntry.getDouble(0);

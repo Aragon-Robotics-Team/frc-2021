@@ -19,8 +19,14 @@ public class FindCell extends CommandBase {
   public void initialize() {
     // For now, we'll turn right but things change sometimes and everything is
     // changing all the time ayayyayayy
-    Robot.drivetrain.setLeftMotor(Constants.CERTAIN_SPEED);
-    Robot.drivetrain.setRightMotor(-Constants.CERTAIN_SPEED);
+    if (Robot.limelight.previousTx >= 0) {
+      Robot.drivetrain.setLeftMotor(-Constants.CERTAIN_SPEED);
+      Robot.drivetrain.setRightMotor(Constants.CERTAIN_SPEED);
+
+    } else {
+      Robot.drivetrain.setLeftMotor(Constants.CERTAIN_SPEED);
+      Robot.drivetrain.setRightMotor(-Constants.CERTAIN_SPEED);
+    }
   }
 
   // Called every time the scheduler runs while the command is scheduled.
