@@ -17,6 +17,7 @@ public class MoveToCell extends CommandBase {
   // Called just before this Command runs the first time
   @Override
   public void initialize() {
+    Robot.limelight.previousTx = Robot.limelight.tx;
   }
 
   // Called repeatedly when this Command is scheduled to run
