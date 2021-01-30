@@ -56,6 +56,8 @@ public final class Constants {
     public static final double MOUNTING_HEIGHT = 1;
     public static final double TARGET_HEIGHT = 7.0 / 12.0;
 
+    // FindMiddleCell
+    public static final double JUMP_SIGNAL = 5.0;
     // MoveToCell
     public static final double KSPEED = 0.6 / 15.0;
     public static final double MIN_HORIZ_OFFSET = 1.5;
@@ -101,5 +103,5 @@ public final class Constants {
     public static double kaVoltSecondsSquaredPerMeter;
     public static double kPDriveVel;
     public static double kvVoltSecondsPerMeter;
-   
+
 }
