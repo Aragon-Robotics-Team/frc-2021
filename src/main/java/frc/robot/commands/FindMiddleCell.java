@@ -8,32 +8,20 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class FindCell extends CommandBase {
-  /** Creates a new FindCell. */
-  public FindCell() {
-    addRequirements(Robot.limelight, Robot.drivetrain);
+public class FindMiddleCell extends CommandBase {
+
+  /** Creates a new FindMiddleCell. */
+  public FindMiddleCell() {
+    // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(Robot.drivetrain, Robot.limelight);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    if (Robot.limelight.previousAngle > 27.0 || Robot.limelight.previousAngle < -27.0) {
-      // blue path
-      if (Robot.limelight.tx > 0) {
-        Robot.drivetrain.setLeftMotor(-Constants.CERTAIN_SPEED);
-        Robot.drivetrain.setRightMotor(Constants.CERTAIN_SPEED);
-      } else {
-        // red path
-        Robot.drivetrain.setLeftMotor(Constants.CERTAIN_SPEED);
-        Robot.drivetrain.setRightMotor(-Constants.CERTAIN_SPEED);
-      }
-    }
-    // For now, we'll turn right but things change sometimes and everything is
-    // changing all the time ayayyayayy
     if (Robot.limelight.previousAngle >= 0) {
       Robot.drivetrain.setLeftMotor(-Constants.CERTAIN_SPEED);
       Robot.drivetrain.setRightMotor(Constants.CERTAIN_SPEED);
-
     } else {
       Robot.drivetrain.setLeftMotor(Constants.CERTAIN_SPEED);
       Robot.drivetrain.setRightMotor(-Constants.CERTAIN_SPEED);
@@ -42,8 +30,8 @@ public class FindCell extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() { // more commonly known as execite
-    // Execute is useless here
+  public void execute() {
+
   }
 
   // Called once the command ends or is interrupted.
@@ -56,7 +44,14 @@ public class FindCell extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Robot.limelight.tv
-        && (Constants.LOWER_BOUND <= Robot.limelight.tx && Robot.limelight.tx <= Constants.UPPER_BOUND);
+    if (!Robot.limelight.tv)
+      return false;
+    else {
+      // check for jump
+      return Robot.limelight.deltaTx > Constants.JUMP_SIGNAL;
+
+      // if jump, return true
+      // if no jump, return false (continue the command)
+    }
   }
 }

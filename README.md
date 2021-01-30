@@ -21,7 +21,8 @@ Main repository for the FRC 2021 build season
 
 ## TODO
 
-- [ ] Fix galactic search logic
+- [x] Fix galactic search logic
 - [ ] Add endzone navigation to GS
 - [ ] Implement autonav trajectories
 - [ ] Add shooter stuff
+- [ ] Test Code (lame)

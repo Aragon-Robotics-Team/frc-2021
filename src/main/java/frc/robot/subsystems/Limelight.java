@@ -27,7 +27,10 @@ public class Limelight extends SubsystemBase {
   public boolean tv;
   public double ta;
 
-  public double previousTx;
+  public double previousAngle = Double.MAX_VALUE;
+
+  public double previousTx = tx;
+  public double deltaTx = 0;
 
   @Override
   public void periodic() {
@@ -35,6 +38,8 @@ public class Limelight extends SubsystemBase {
     ty = tyEntry.getDouble(0);
     tv = tvEntry.getDouble(0) == 1;
     ta = taEntry.getDouble(0);
+    deltaTx = Math.abs(tx - previousTx);
+    previousTx = tx;
   }
 
   public double getEstimatedDistance() {
