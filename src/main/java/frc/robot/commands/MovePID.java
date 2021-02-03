@@ -25,31 +25,32 @@ public class MovePID extends CommandBase {
         lastTimestamp = Timer.getFPGATimestamp();
     }
 
-    @Override
-    public void execute() {
-        double encoderPos = Robot.drivetrain.getEncoderPos();
+    // @Override
+    // public void execute() {
+    // double encoderPos = Robot.drivetrain.getEncoderPos();
 
-        double error = setPoint - encoderPos;
-        double deltaTime = Timer.getFPGATimestamp() - lastTimestamp;
+    // double error = setPoint - encoderPos;
+    // double deltaTime = Timer.getFPGATimestamp() - lastTimestamp;
 
-        // Stop "I" value early to stop staggering
-        if (Math.abs(error) < Constants.I_LIMIT) {
-            errorSum += error * deltaTime;
-        }
+    // Stop "I" value early to stop staggering
+    // if (Math.abs(error) < Constants.I_LIMIT) {
+    // errorSum += error * deltaTime;
+    // }
 
-        double errorRate = (error - lastError) / deltaTime;
-        double outputSpeed = Constants.KP * error + Constants.KI * errorSum + Constants.KD * errorRate;
+    // double errorRate = (error - lastError) / deltaTime;
+    // double outputSpeed = Constants.KP * error + Constants.KI * errorSum +
+    // Constants.KD * errorRate;
 
-        Robot.drivetrain.setLeftMotor(outputSpeed);
-        Robot.drivetrain.setRightMotor(-outputSpeed);
+    // Robot.drivetrain.setLeftMotor(outputSpeed);
+    // Robot.drivetrain.setRightMotor(-outputSpeed);
 
-        lastTimestamp = Timer.getFPGATimestamp();
-        lastError = error;
+    // lastTimestamp = Timer.getFPGATimestamp();
+    // lastError = error;
 
-        if (error <= Constants.PID_TIMER_START) {
-            correctionStartTimestamp = Timer.getFPGATimestamp();
-        }
-    }
+    // if (error <= Constants.PID_TIMER_START) {
+    // correctionStartTimestamp = Timer.getFPGATimestamp();
+    // }
+    // }
 
     @Override
     public boolean isFinished() {
