@@ -42,7 +42,7 @@ public class RobotContainer {
         Robot.drivetrain.getKinematics(),
         Robot.drivetrain::getSpeeds,
         Robot.drivetrain.getLeftPIDController(),
-        Robot.drivetrain.getLeftPIDController(),
+        Robot.drivetrain.getRightPIDController(),
         Robot.drivetrain::setOutputVolts,
         Robot.drivetrain
     );

@@ -161,6 +161,9 @@ public class Drivetrain extends SubsystemBase {
 		return leftPIDController;
     }
     
+    public PIDController getRightPIDController() {
+		return rightPIDController;
+    }
     public DifferentialDriveWheelSpeeds getSpeeds() {
         return new DifferentialDriveWheelSpeeds(
             leftMotorMaster.getEncoder().getVelocity() / Constants.kGearRatio * 2 * Math.PI * Units.inchesToMeters(Constants.kWheelRadiusInches) / 60,
