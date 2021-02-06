@@ -4,17 +4,22 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.controller.PIDController;
+import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
+import edu.wpi.first.wpilibj.util.Units;
 
 //Auto nav improts imports
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.geometry.Pose2d;
+import edu.wpi.first.wpilibj.geometry.Rotation2d;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -24,7 +29,11 @@ public class Drivetrain extends SubsystemBase {
     private CANSparkMax leftMotorMaster = new CANSparkMax(Constants.LEFT_MOTOR_MASTER, MotorType.kBrushless);
     private CANSparkMax rightMotorMaster = new CANSparkMax(Constants.RIGHT_MOTOR_MASTER, MotorType.kBrushless);
     private Encoder encoder = new Encoder(0, 1, false, EncodingType.k4X);
-
+    DifferentialDriveKinematics kinematics = new DifferentialDriveKinematics(Units.inchesToMeters(28));
+    PIDController leftPIDController = new PIDController(2.95, 0, 0);
+    PIDController rightPIDController = new PIDController(2.95, 0, 0);
+    SimpleMotorFeedforward feedforward = new SimpleMotorFeedforward(0.3, 1.96, 0.06);
+    
     // Roshi + Luke's thing for autonav
     final SpeedControllerGroup m_leftMotors = new SpeedControllerGroup(leftMotorMaster, leftMotorSlave);
     final SpeedControllerGroup m_rightMotors = new SpeedControllerGroup(rightMotorMaster, rightMotorSlave);
@@ -123,6 +132,10 @@ public class Drivetrain extends SubsystemBase {
         return m_gyro.getRotation2d().getDegrees();
     }
 
+    public Rotation2d getHeading2() {
+        return Rotation2d.fromDegrees(-m_gyro.getAngle());
+    }
+
     public double getTurnRate() {
         return -m_gyro.getRate();
     }
@@ -135,4 +148,33 @@ public class Drivetrain extends SubsystemBase {
         encoder.reset();
 
     }
+
+    public DifferentialDriveKinematics getKinematics() {
+        return kinematics;
+      }
+
+	public SimpleMotorFeedforward getFeedforward() {
+        return feedforward;
+	}
+
+	public PIDController getLeftPIDController() {
+		return leftPIDController;
+    }
+    
+    public DifferentialDriveWheelSpeeds getSpeeds() {
+        return new DifferentialDriveWheelSpeeds(
+            leftMotorMaster.getEncoder().getVelocity() / Constants.kGearRatio * 2 * Math.PI * Units.inchesToMeters(Constants.kWheelRadiusInches) / 60,
+            rightMotorMaster.getEncoder().getVelocity() / Constants.kGearRatio * 2 * Math.PI * Units.inchesToMeters(Constants.kWheelRadiusInches) / 60
+        );
+      }
+    
+    public void setOutputVolts(double leftVolts, double rightVolts) {
+        leftMotorMaster.set(leftVolts / 12);
+        rightMotorMaster.set(rightVolts / 12);
+      }
+
+      public void reset() {
+        m_odometry.resetPosition(new Pose2d(), getHeading2());
+      }
+
 }

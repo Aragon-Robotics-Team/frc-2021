@@ -50,6 +50,8 @@ public final class Constants {
     public static final double kTrackwidthMeters = 0.69;
     public static final DifferentialDriveKinematics kDriveKinematics = new DifferentialDriveKinematics(
             kTrackwidthMeters);
+    public static final double kGearRatio = 3;
+    public static final double kWheelRadiusInches = 3.0;
 
     // Limelight
     public static final double MOUNTING_ANGLE = 0;

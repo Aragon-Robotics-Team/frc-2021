@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Limelight;
+import frc.robot.trajectory.TrajectoryFactory;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -75,7 +76,13 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
 
+    RobotContainer.getAutonomousCommand(TrajectoryFactory.generateTrajectory("autonav")).schedule();
     drivetrain.resetEncoder();
+  }
+
+  @Override
+  public void autonomousPeriodic() {
+    CommandScheduler.getInstance().run();
   }
 
   @Override
