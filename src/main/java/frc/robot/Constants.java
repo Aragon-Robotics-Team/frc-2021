@@ -82,6 +82,12 @@ public final class Constants {
     public static final int RAMP_TIME = 1;
     public static final int ROLL_TIME = 2;
 
+    // SHOOTEer
+    public static final int hSolenoidLeftFwd = 2;
+    public static final int hSolenoidLeftRev = 3;
+    public static final int hSolenoidRightFwd = 4;
+    public static final int hSolenoidRightRev = 5;
+
     // Autonav constants
     public static final double kMaxSpeedMetersPerSecond = 3;
     public static final double kMaxAccelerationMetersPerSecondSquared = 3;
