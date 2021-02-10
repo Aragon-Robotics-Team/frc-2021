@@ -10,6 +10,7 @@ public class Flywheel extends SubsystemBase {
 
   /** Creates a new Flywheel. */
   public Flywheel() {
+    
   }
 
   @Override

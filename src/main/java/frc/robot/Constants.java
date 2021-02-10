@@ -71,6 +71,20 @@ public final class Constants {
     public static final double UPPER_BOUND = 25.0;
     public static final double CERTAIN_SPEED = 0.6;
 
+    // Flywheel
+    public static final int MOTOR_PORT = 1;
+    public static final int MOTOR_PORT_SLAVE = 1;
+    public static final boolean INVERT_ALL = false;
+    public static final boolean INVERT_SLAVE = true;
+
+    //Fun-elle
+    public static final int LEFT_FUNNEL_PORTS = 3;
+    public static final int RIGHT_FUNNEL_PORTS = 6;
+    public static final double FUNNEL_SPEED = 0.7;
+
+    //t o w e r
+    public static final int TOWER_PORT = 7;
+
     // INTAKEEEE
     // arm
     public static final int solenoidLeftFwd = 0;
