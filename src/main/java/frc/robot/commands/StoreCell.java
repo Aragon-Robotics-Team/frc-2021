@@ -4,17 +4,16 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.subsystems.Intake.Intake;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class CollectCell extends SequentialCommandGroup {
-  /** Creates a new CollectCell. */
-  public CollectCell() {
+public class StoreCell extends ParallelCommandGroup {
+  /** Creates a new StoreCell. */
+  public StoreCell() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(Intake.arm.armOut(), new StoreCell(), Intake.arm.armIn());
+    addCommands(new RollIntake(), new RollFunnel(), new RollTower());
   }
 }

@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
@@ -79,6 +80,21 @@ public class Drivetrain extends SubsystemBase {
         // Update the odometry in the periodic block
         m_odometry.update(m_gyro.getRotation2d(), m_leftEncoder.getDistance(), m_rightEncoder.getDistance());
     }
+
+    public void setBrake(boolean brakeOn) {
+        if (brakeOn) {
+            leftMotorMaster.setIdleMode(IdleMode.kBrake);
+            leftMotorSlave.setIdleMode(IdleMode.kBrake);
+            rightMotorMaster.setIdleMode(IdleMode.kBrake);
+            rightMotorSlave.setIdleMode(IdleMode.kBrake);
+        }
+        else {
+            leftMotorMaster.setIdleMode(IdleMode.kCoast);
+            leftMotorSlave.setIdleMode(IdleMode.kCoast);
+            rightMotorMaster.setIdleMode(IdleMode.kCoast);
+            rightMotorSlave.setIdleMode(IdleMode.kCoast);
+        }
+    } 
 
     public Pose2d getPose() {
         return m_odometry.getPoseMeters();

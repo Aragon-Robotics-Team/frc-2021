@@ -60,6 +60,7 @@ public final class Constants {
 
     // FindMiddleCell
     public static final double JUMP_SIGNAL = 5.0;
+
     // MoveToCell
     public static final double KSPEED = 0.6 / 15.0;
     public static final double MIN_HORIZ_OFFSET = 1.5;
@@ -84,6 +85,8 @@ public final class Constants {
 
     //t o w e r
     public static final int TOWER_PORT = 7;
+    public static final double TOWER_SPEED = 0.5;
+    public static final double FOUR = 4.0;
 
     // INTAKEEEE
     // arm
@@ -96,7 +99,7 @@ public final class Constants {
     public static final int ROLLER_MOTOR = 4;
     public static final int VOLTS_FULL = 12;
     public static final int RAMP_TIME = 1;
-    public static final int ROLL_TIME = 2;
+    public static final double ROLL_TIME = 2.0;
 
     // SHOOTEer
     public static final int hSolenoidLeftFwd = 2;

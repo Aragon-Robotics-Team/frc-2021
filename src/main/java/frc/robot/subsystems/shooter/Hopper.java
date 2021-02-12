@@ -1,10 +1,6 @@
 package frc.robot.subsystems.shooter;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
-public class Hopper extends SubsystemBase{
-    
-    public Hopper() {
-
-    }
+public class Hopper {
+    public static final Funnel funnel = new Funnel();
+    public static final Tower tower = new Tower();
 }
