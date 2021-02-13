@@ -43,13 +43,13 @@ public class Drivetrain extends SubsystemBase {
 
     private final DifferentialDriveOdometry m_odometry;
 
-    // Add following
-    // leftMotorSlave.follow(leftMotorMaster);
-    // rightMotorSlave.follow(rightMotorMaster);
-
     public Drivetrain() {
         leftMotorSlave.setInverted(true);
         leftMotorMaster.setInverted(true);
+
+        // Add following
+        leftMotorSlave.follow(leftMotorMaster);
+        rightMotorSlave.follow(rightMotorMaster);
 
         // m_leftEncoder.setDistancePerPulse(Constants.kEncoderDistancePerPulse);
         // m_rightEncoder.setDistancePerPulse(Constants.kEncoderDistancePerPulse);
