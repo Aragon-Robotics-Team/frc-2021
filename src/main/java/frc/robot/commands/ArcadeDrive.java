@@ -22,7 +22,7 @@ public class ArcadeDrive extends CommandBase {
     @Override
     public void execute() {
         double speed = -Robot.joystick.getRawAxis(1) * Constants.SPEED_MULT;
-        double turn = Robot.joystick.getRawAxis(0) * Constants.TURN_MULT;
+        double turn = Robot.joystick.getRawAxis(4) * Constants.TURN_MULT;
 
         // Quick maths to get left and right
         double left = speed + turn;
@@ -30,6 +30,8 @@ public class ArcadeDrive extends CommandBase {
 
         Robot.drivetrain.setLeftMotor(left);
         Robot.drivetrain.setRightMotor(right);
+
+        Robot.drivetrain.checkMotorOutput();
     }
 
     // Make this return true when this Command no longer needs to run execute()
