@@ -16,8 +16,6 @@ public class GalacticSearch extends SequentialCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(new FindCell(), new MoveToCell(), new CollectCell(), // First Cell
         new FindMiddleCell(), new MoveToCell(), new CollectCell(), // Second Cell
-        new FindCell(), new MoveToCell(), new CollectCell(), // Third cell
-        new FindCell(), new MoveToCell() // Endzone
-    );
+        new FindCell(), new MoveToCell(), new CollectCell()); // Third Cell
   }
 }

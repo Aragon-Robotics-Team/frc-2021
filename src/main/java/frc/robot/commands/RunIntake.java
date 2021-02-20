@@ -4,39 +4,35 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
-import frc.robot.subsystems.shooter.Hopper;
+import frc.robot.subsystems.Intake.Intake;
 
-public class RollTower extends CommandBase {
-  private double startTime;
-  /** Creates a new RollTower. */
-  public RollTower() {
+public class RunIntake extends CommandBase {
+  /** Creates a new TestIntake. */
+  public RunIntake() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Hopper.tower);
+    addRequirements(Intake.roller);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    startTime = Timer.getFPGATimestamp();
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Hopper.tower.setIn();
+    Intake.roller.setOn();
   }
+
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Hopper.tower.setZero();
+    Intake.roller.setOff();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Timer.getFPGATimestamp() - startTime >= Constants.FOUR;
+    return false;
   }
 }

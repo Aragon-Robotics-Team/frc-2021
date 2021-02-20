@@ -48,10 +48,9 @@ public final class Constants {
     public static final double kA = 1.0;
 
     public static final double kTrackwidthMeters = 0.69;
-    public static final DifferentialDriveKinematics kDriveKinematics = new DifferentialDriveKinematics(
-            kTrackwidthMeters);
-    public static final double kGearRatio = 3;
-    public static final double kWheelRadiusInches = 3.0;
+    // public static final DifferentialDriveKinematics kDriveKinematics = new
+    // DifferentialDriveKinematics(
+    // kTrackwidthMeters);
 
     // Limelight
     public static final double MOUNTING_ANGLE = 0;
@@ -60,7 +59,6 @@ public final class Constants {
 
     // FindMiddleCell
     public static final double JUMP_SIGNAL = 5.0;
-
     // MoveToCell
     public static final double KSPEED = 0.6 / 15.0;
     public static final double MIN_HORIZ_OFFSET = 1.5;
@@ -71,22 +69,6 @@ public final class Constants {
     public static final double LOWER_BOUND = -25.0;
     public static final double UPPER_BOUND = 25.0;
     public static final double CERTAIN_SPEED = 0.6;
-
-    // Flywheel
-    public static final int MOTOR_PORT = 1;
-    public static final int MOTOR_PORT_SLAVE = 1;
-    public static final boolean INVERT_ALL = false;
-    public static final boolean INVERT_SLAVE = true;
-
-    //Fun-elle
-    public static final int LEFT_FUNNEL_PORTS = 3;
-    public static final int RIGHT_FUNNEL_PORTS = 6;
-    public static final double FUNNEL_SPEED = 0.7;
-
-    //t o w e r
-    public static final int TOWER_PORT = 7;
-    public static final double TOWER_SPEED = 0.5;
-    public static final double FOUR = 4.0;
 
     // INTAKEEEE
     // arm
@@ -99,13 +81,7 @@ public final class Constants {
     public static final int ROLLER_MOTOR = 4;
     public static final int VOLTS_FULL = 12;
     public static final int RAMP_TIME = 1;
-    public static final double ROLL_TIME = 2.0;
-
-    // SHOOTEer
-    public static final int hSolenoidLeftFwd = 2;
-    public static final int hSolenoidLeftRev = 3;
-    public static final int hSolenoidRightFwd = 4;
-    public static final int hSolenoidRightRev = 5;
+    public static final int ROLL_TIME = 2;
 
     // Autonav constants
     public static final double kMaxSpeedMetersPerSecond = 3;
@@ -114,15 +90,15 @@ public final class Constants {
     public static final double kRamseteZeta = 0.7;
 
     // placeholder ports
-    public static final double kLeftMotor1Port = 1;
-    public static final double kLeftMotor2Port = 1;
-    public static final double kRightMotor1port = 1;
-    public static final double kRightMotor2port = 1;
+    // public static final double kLeftMotor1Port = 1;
+    // public static final double kLeftMotor2Port = 1;
+    // public static final double kRightMotor1port = 1;
+    // public static final double kRightMotor2port = 1;
 
-    public static final int[] kLeftEncoderPorts = { 0, 1 };
-    public static final boolean kLeftEncoderReversed = false;
-    public static final int[] kRightEncoderPorts = { 0, 1 };
-    public static final boolean kRightEncoderReversed = true;
+    // public static final int[] kLeftEncoderPorts = { 0, 1 };
+    // public static final boolean kLeftEncoderReversed = false;
+    // public static final int[] kRightEncoderPorts = { 0, 1 };
+    // public static final boolean kRightEncoderReversed = true;
     public static final double ksVolts = 0;
     public static double kEncoderDistancePerPulse = 1;
     public static double kaVoltSecondsSquaredPerMeter;

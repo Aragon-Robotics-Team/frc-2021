@@ -26,7 +26,7 @@ public class Arm extends SubsystemBase {
   /** Creates a new Arm. */
   public Arm() {
     solenoidLeft = new DoubleSolenoid(Constants.pcmId, Constants.solenoidLeftFwd, Constants.solenoidLeftRev);
-    solenoidRight = new DoubleSolenoid(Constants.pcmId, Constants.solenoidRightFwd, Constants.solenoidRightRev);
+    solenoidRight = new DoubleSolenoid(Constants.pcmId, Constants.solenoidRightFwd, Constants.solenoidLeftRev);
 
     posMap.put(Position.In, Value.kReverse);
     posMap.put(Position.Out, Value.kForward);

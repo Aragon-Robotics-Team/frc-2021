@@ -7,10 +7,13 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.button.Button;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.RunIntake;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Limelight;
-import frc.robot.trajectory.TrajectoryFactory;
+import frc.robot.subsystems.Intake.Intake;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,95 +23,88 @@ import frc.robot.trajectory.TrajectoryFactory;
  * project.
  */
 public class Robot extends TimedRobot {
-  // Subsystems:
-  public static Drivetrain drivetrain = new Drivetrain();
-  public static Limelight limelight = new Limelight();
+    // Subsystems:
+    public static Drivetrain drivetrain = new Drivetrain();
+    public static Limelight limelight = new Limelight();
 
-  // Commands:
-  private ArcadeDrive arcadeDrive;
+    // Commands:
+    private ArcadeDrive arcadeDrive;
 
-  // OI:
-  public static Joystick joystick = new Joystick(Constants.JOYSTICK_PORT);
+    // OI:
+    public static Joystick joystick = new Joystick(Constants.JOYSTICK_PORT);
 
-  /**
-   * This function is run when the robot is first started up and should be used
-   * for any initialization code.
-   */
-  @Override
-  public void robotInit() {
-    drivetrain.resetEncoder();
-  }
+    public Button intakeButton = new JoystickButton(joystick, 1);
+    /**
+     * This function is run when the robot is first started up and should be used
+     * for any initialization code.
+     */
+    @Override
+    public void robotInit() {
+        // drivetrain.resetEncoder();
+    }
 
-  /**
-   * This function is called every robot packet, no matter the mode. Use this for
-   * items like diagnostics that you want ran during disabled, autonomous,
-   * teleoperated and test.
-   *
-   * <p>
-   * This runs after the mode specific periodic functions, but before LiveWindow
-   * and SmartDashboard integrated updating.
-   */
-  @Override
-  public void robotPeriodic() {
-    // Runs the Scheduler. This is responsible for polling buttons, adding
-    // newly-scheduled
-    // commands, running already-scheduled commands, removing finished or
-    // interrupted commands,
-    // and running subsystem periodic() methods. This must be called from the
-    // robot's periodic
-    // block in order for anything in the Command-based framework to work.
-    CommandScheduler.getInstance().run();
-  }
+    /**
+     * This function is called every robot packet, no matter the mode. Use this for
+     * items like diagnostics that you want ran during disabled, autonomous,
+     * teleoperated and test.
+     *
+     * <p>
+     * This runs after the mode specific periodic functions, but before LiveWindow
+     * and SmartDashboard integrated updating.
+     */
+    @Override
+    public void robotPeriodic() {
+        // Runs the Scheduler. This is responsible for polling buttons, adding
+        // newly-scheduled
+        // commands, running already-scheduled commands, removing finished or
+        // interrupted commands,
+        // and running subsystem periodic() methods. This must be called from the
+        // robot's periodic
+        // block in order for anything in the Command-based framework to work.
+        CommandScheduler.getInstance().run();
+    }
 
-  /** This function is called once each time the robot enters Disabled mode. */
-  @Override
-  public void disabledInit() {
-    drivetrain.setBrake(false);
+    /** This function is called once each time the robot enters Disabled mode. */
+    @Override
+    public void disabledInit() {
+    }
 
-  }
+    @Override
+    public void disabledPeriodic() {
+    }
 
-  @Override
-  public void disabledPeriodic() {
-  }
+    /**
+     * This autonomous runs the autonomous command selected by your
+     * {@link RobotContainer} class.
+     */
+    @Override
+    public void autonomousInit() {
 
-  /**
-   * This autonomous runs the autonomous command selected by your
-   * {@link RobotContainer} class.
-   */
-  @Override
-  public void autonomousInit() {
+        // drivetrain.resetEncoder();
+    }
 
-    RobotContainer.getAutonomousCommand(TrajectoryFactory.generateTrajectory("autonav")).schedule();
-    drivetrain.resetEncoder();
-    drivetrain.setBrake(true);
-  }
+    @Override
+    public void teleopInit() {
+        // drivetrain.resetEncoder();
+        // arcadeDrive = new ArcadeDrive();
+        // arcadeDrive.schedule();
 
-  @Override
-  public void autonomousPeriodic() {
-    CommandScheduler.getInstance().run();
-  }
+        intakeButton.toggleWhenPressed(new RunIntake());
+    }
 
-  @Override
-  public void teleopInit() {
-    drivetrain.resetEncoder();
-    drivetrain.setBrake(true);
-    arcadeDrive = new ArcadeDrive();
-    arcadeDrive.schedule();
-  }
+    /** This function is called periodically during operator control. */
+    @Override
+    public void teleopPeriodic() {
+    }
 
-  /** This function is called periodically during operator control. */
-  @Override
-  public void teleopPeriodic() {
-  }
+    @Override
+    public void testInit() {
+        // Cancels all running commands at the start of test mode.
+        CommandScheduler.getInstance().cancelAll();
+    }
 
-  @Override
-  public void testInit() {
-    // Cancels all running commands at the start of test mode.
-    CommandScheduler.getInstance().cancelAll();
-  }
-
-  /** This function is called periodically during test mode. */
-  @Override
-  public void testPeriodic() {
-  }
+    /** This function is called periodically during test mode. */
+    @Override
+    public void testPeriodic() {
+    }
 }

@@ -15,6 +15,6 @@ public class CollectCell extends SequentialCommandGroup {
   public CollectCell() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(Intake.arm.armOut(), new StoreCell(), Intake.arm.armIn());
+    addCommands(Intake.arm.armOut(), new RollIntake(), Intake.arm.armIn());
   }
 }
