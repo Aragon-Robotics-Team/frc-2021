@@ -7,9 +7,13 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.button.Button;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.RunIntake;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Limelight;
+import frc.robot.subsystems.Intake.Intake;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,6 +33,7 @@ public class Robot extends TimedRobot {
     // OI:
     public static Joystick joystick = new Joystick(Constants.JOYSTICK_PORT);
 
+    public Button intakeButton = new JoystickButton(joystick, 1);
     /**
      * This function is run when the robot is first started up and should be used
      * for any initialization code.
@@ -81,8 +86,10 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopInit() {
         // drivetrain.resetEncoder();
-        arcadeDrive = new ArcadeDrive();
-        arcadeDrive.schedule();
+        // arcadeDrive = new ArcadeDrive();
+        // arcadeDrive.schedule();
+
+        intakeButton.toggleWhenPressed(new RunIntake());
     }
 
     /** This function is called periodically during operator control. */
