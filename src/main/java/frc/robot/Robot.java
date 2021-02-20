@@ -10,7 +10,9 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ArcadeDrive;
-import frc.robot.commands.RunIntake;
+import frc.robot.commands.TestRollFunnel;
+import frc.robot.commands.TestRollTower;
+import frc.robot.commands.TestRunIntake;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.Intake.Intake;
@@ -34,6 +36,8 @@ public class Robot extends TimedRobot {
     public static Joystick joystick = new Joystick(Constants.JOYSTICK_PORT);
 
     public Button intakeButton = new JoystickButton(joystick, 1);
+    public Button funnelButton = new JoystickButton(joystick, 2);
+    public Button towerButton = new JoystickButton(joystick, 3);
     /**
      * This function is run when the robot is first started up and should be used
      * for any initialization code.
@@ -89,7 +93,9 @@ public class Robot extends TimedRobot {
         // arcadeDrive = new ArcadeDrive();
         // arcadeDrive.schedule();
 
-        intakeButton.toggleWhenPressed(new RunIntake());
+        intakeButton.toggleWhenPressed(new TestRunIntake());
+        funnelButton.toggleWhenPressed(new TestRollFunnel());
+        towerButton.toggleWhenPressed(new TestRollTower());
     }
 
     /** This function is called periodically during operator control. */
