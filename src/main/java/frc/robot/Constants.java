@@ -105,4 +105,13 @@ public final class Constants {
     public static double kPDriveVel;
     public static double kvVoltSecondsPerMeter;
 
+    // tower
+    public static final int TOWER_PORT = 7;
+    public static final double TOWER_SPEED = 0.5;
+    public static final double FOUR = 4.0;
+
+    //Fun-elle
+    public static final int LEFT_FUNNEL_PORTS = 3;
+    public static final int RIGHT_FUNNEL_PORTS = 6;
+    public static final double FUNNEL_SPEED = 0.7;
 }
