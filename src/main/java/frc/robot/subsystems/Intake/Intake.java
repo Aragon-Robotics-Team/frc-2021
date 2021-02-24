@@ -9,6 +9,6 @@ package frc.robot.subsystems.Intake;
  * (in). This class makes that happen
  */
 public class Intake {
-    public static Arm arm = new Arm();
+    // public static Arm arm = new Arm();
     public static Roller roller = new Roller();
 }
