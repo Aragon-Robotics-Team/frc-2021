@@ -129,14 +129,14 @@ public final class Constants {
     //    xXXXXXX"        "XXXXXXx
     // xxXXXXXXX            XXXXXXXxx
 
-    public static final int TOWER_PORT = 1 * 2 * 7;
+    public static final int TOWER_PORT = 1;
     public static final double TOWER_SPEED = 0.5;
     public static final double FOUR = 4.0;
 
     public static final int FLYWHEEL_PORT = 7;
 
     //Fun-elle
-    public static final int LEFT_FUNNEL_PORTS = 3;
-    public static final int RIGHT_FUNNEL_PORTS = 8 * 1 / 2 + 4;
+    public static final int LEFT_FUNNEL_PORTS = 6;
+    public static final int RIGHT_FUNNEL_PORTS = 7;
     public static final double FUNNEL_SPEED = 0.7;
 }
