@@ -105,8 +105,8 @@ public final class Constants {
     public static double kPDriveVel;
     public static double kvVoltSecondsPerMeter;
 
-    // tower aka tunnel
-    //                ()
+    // tower aka tunnel aka french pyramid
+    //                () <-- small person
     //               /\
     //              |==|
     //              ====
