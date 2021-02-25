@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.subsystems.Intake.Intake;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -14,10 +15,10 @@ public class GalacticSearch extends SequentialCommandGroup {
   public GalacticSearch() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new FindCell(), new MoveToCell(), new CollectCell(), // First Cell
-        new FindMiddleCell(), new MoveToCell(), new CollectCell(), // Second Cell
-        new FindCell(), new MoveToCell(), new CollectCell(), // Third cell
-        new FindCell(), new MoveToCell() // Endzone
+    addCommands(Intake.arm.armOut()  ,new FindCell(), new MoveToCell(), new StoreCell(), // First Cell
+        new FindMiddleCell(), new MoveToCell(), new StoreCell(), // Second Cell
+        new FindCell(), new MoveToCell(), new StoreCell(), // Third cell
+        new FindCell(), new MoveToCell(), Intake.arm.armIn() // Endzone
     );
   }
 }
