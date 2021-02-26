@@ -73,10 +73,11 @@ public final class Constants {
     public static final double CERTAIN_SPEED = 0.6;
 
     // Flywheel
-    public static final int MOTOR_PORT = 1;
-    public static final int MOTOR_PORT_SLAVE = 1;
+    public static final int FLY_MOTOR_PORT = 1;
+    public static final int FLY_MOTOR_PORT_SLAVE = 1;
     public static final boolean INVERT_ALL = false;
     public static final boolean INVERT_SLAVE = true;
+    public static final double FLY_VOLTAGE = 0.9;
 
     //Fun-elle
     public static final int LEFT_FUNNEL_PORTS = 3;
