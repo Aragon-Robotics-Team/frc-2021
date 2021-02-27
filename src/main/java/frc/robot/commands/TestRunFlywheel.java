@@ -17,13 +17,12 @@ public class TestRunFlywheel extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-
+    Shooter.flywheel.setOn();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Shooter.flywheel.setOn();
   }
 
   // Called once the command ends or is interrupted.

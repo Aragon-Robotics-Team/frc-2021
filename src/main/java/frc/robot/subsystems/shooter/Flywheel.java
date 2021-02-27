@@ -19,7 +19,7 @@ public class Flywheel extends SubsystemBase {
   /** Creates a new Flywheel. */
   public Flywheel() {
     flyMotorMaster.setInverted(false);
-    flyMotorSlave.setInverted(false);
+    flyMotorSlave.setInverted(true);
     flyMotorMaster.setNeutralMode(NeutralMode.Brake);
     flyMotorSlave.setNeutralMode(NeutralMode.Brake);
     flyMotorSlave.follow(flyMotorMaster);

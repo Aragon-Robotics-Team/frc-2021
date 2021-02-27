@@ -135,7 +135,7 @@ public final class Constants {
 
     public static final int FLY_MOTOR_PORT = 5;
     public static final int FLY_MOTOR_PORT_SLAVE = 7;
-    public static final double FLY_VOLTAGE = 0.9;
+    public static final double FLY_VOLTAGE = 0.6;
     //Fun-elle
     public static final int LEFT_FUNNEL_PORTS = 6;
     public static final int RIGHT_FUNNEL_PORTS = 7;

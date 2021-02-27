@@ -17,6 +17,7 @@ import frc.robot.commands.TestRunIntake;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.Intake.Intake;
+import frc.robot.subsystems.shooter.Shooter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -40,6 +41,8 @@ public class Robot extends TimedRobot {
     public Button funnelButton = new JoystickButton(joystick, 2);
     public Button towerButton = new JoystickButton(joystick, 3);
     public Button flywheelButton = new JoystickButton(joystick, 4);
+    public Button hoodInButton = new JoystickButton(joystick, 5);
+    public Button hoodOutButton = new JoystickButton(joystick, 6);
     /**
      * This function is run when the robot is first started up and should be used
      * for any initialization code.
@@ -99,6 +102,8 @@ public class Robot extends TimedRobot {
         funnelButton.toggleWhenPressed(new TestRollFunnel());
         towerButton.toggleWhenPressed(new TestRollTower());
         flywheelButton.toggleWhenPressed(new TestRunFlywheel());
+        hoodInButton.whenPressed(Shooter.hood.hoodIn());
+        hoodOutButton.whenPressed(Shooter.hood.hoodOut());
     }
 
     /** This function is called periodically during operator control. */
