@@ -37,12 +37,12 @@ public class Robot extends TimedRobot {
     // OI:
     public static Joystick joystick = new Joystick(Constants.JOYSTICK_PORT);
 
-    public Button intakeButton = new JoystickButton(joystick, 1);
-    public Button funnelButton = new JoystickButton(joystick, 2);
-    public Button towerButton = new JoystickButton(joystick, 3);
-    public Button flywheelButton = new JoystickButton(joystick, 4);
-    public Button hoodInButton = new JoystickButton(joystick, 5);
-    public Button hoodOutButton = new JoystickButton(joystick, 6);
+    public Button intakeButton = new JoystickButton(joystick, Constants.INTAKE_BUTTON);
+    public Button funnelButton = new JoystickButton(joystick, Constants.FUNNEL_BUTTON);
+    public Button towerButton = new JoystickButton(joystick, Constants.TOWER_BUTTON);
+    public Button flywheelButton = new JoystickButton(joystick, Constants.FLYWHEEL_BUTTON);
+    public Button hoodInButton = new JoystickButton(joystick, Constants.HOOD_IN_BUTTON);
+    public Button hoodOutButton = new JoystickButton(joystick, Constants.HOOD_OUT_BUTTON);
     /**
      * This function is run when the robot is first started up and should be used
      * for any initialization code.

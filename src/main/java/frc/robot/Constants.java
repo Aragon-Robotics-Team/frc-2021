@@ -140,4 +140,20 @@ public final class Constants {
     public static final int LEFT_FUNNEL_PORTS = 6;
     public static final int RIGHT_FUNNEL_PORTS = 7;
     public static final double FUNNEL_SPEED = 0.7;
+
+    /*
+    Button Layout: https://lh3.googleusercontent.com/proxy/4yxUw9HDilB3aXxwCBah5cEqYzxUmfjy8SinOk6YDfjythu9zwu0d1L2G3VlhRRYZNajZn8tlqefoYg066u8VogdlhkxIhQerXLhNC6UfKqipMiXQ9LEgrzOlI8CB700HRklZMxHS5dCVwnkp2zQ0Q
+        4
+      3   2
+        1
+    
+    5, 6: lb and rb
+    7, 8: middle two buttons
+    */
+    public static final int INTAKE_BUTTON = 1;
+    public static final int FUNNEL_BUTTON = 2;
+    public static final int TOWER_BUTTON = 3;
+    public static final int FLYWHEEL_BUTTON = 4;
+    public static final int HOOD_IN_BUTTON = 5;
+    public static final int HOOD_OUT_BUTTON = 7;
 }
