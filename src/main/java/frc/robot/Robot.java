@@ -12,10 +12,12 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.TestRollFunnel;
 import frc.robot.commands.TestRollTower;
+import frc.robot.commands.TestRunFlywheel;
 import frc.robot.commands.TestRunIntake;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.Intake.Intake;
+import frc.robot.subsystems.shooter.Shooter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -35,9 +37,12 @@ public class Robot extends TimedRobot {
     // OI:
     public static Joystick joystick = new Joystick(Constants.JOYSTICK_PORT);
 
-    public Button intakeButton = new JoystickButton(joystick, 1);
-    public Button funnelButton = new JoystickButton(joystick, 2);
-    public Button towerButton = new JoystickButton(joystick, 3);
+    public Button intakeButton = new JoystickButton(joystick, Constants.INTAKE_BUTTON);
+    public Button funnelButton = new JoystickButton(joystick, Constants.FUNNEL_BUTTON);
+    public Button towerButton = new JoystickButton(joystick, Constants.TOWER_BUTTON);
+    public Button flywheelButton = new JoystickButton(joystick, Constants.FLYWHEEL_BUTTON);
+    public Button hoodInButton = new JoystickButton(joystick, Constants.HOOD_IN_BUTTON);
+    public Button hoodOutButton = new JoystickButton(joystick, Constants.HOOD_OUT_BUTTON);
     /**
      * This function is run when the robot is first started up and should be used
      * for any initialization code.
@@ -96,6 +101,9 @@ public class Robot extends TimedRobot {
         intakeButton.toggleWhenPressed(new TestRunIntake());
         funnelButton.toggleWhenPressed(new TestRollFunnel());
         towerButton.toggleWhenPressed(new TestRollTower());
+        flywheelButton.toggleWhenPressed(new TestRunFlywheel());
+        hoodInButton.whenPressed(Shooter.hood.hoodIn());
+        hoodOutButton.whenPressed(Shooter.hood.hoodOut());
     }
 
     /** This function is called periodically during operator control. */
