@@ -33,6 +33,10 @@ public class Flywheel extends SubsystemBase {
     flyMotorMaster.set(TalonSRXControlMode.PercentOutput, 0);
   }
 
+  public void setOnTrigger(double triggerInput) {
+    flyMotorMaster.set(TalonSRXControlMode.PercentOutput, triggerInput);
+  }
+
   public void setAtRPM(int rpm) {
     // rpm = how does one do this
   }

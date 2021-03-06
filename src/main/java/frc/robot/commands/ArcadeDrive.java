@@ -21,8 +21,8 @@ public class ArcadeDrive extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     @Override
     public void execute() {
-        double speed = -Robot.joystick.getRawAxis(1) * Constants.SPEED_MULT;
-        double turn = Robot.joystick.getRawAxis(4) * Constants.TURN_MULT;
+        double speed = -Robot.joystick.getRawAxis(Constants.LEFT_X_AXIS) * Constants.SPEED_MULT;
+        double turn = Robot.joystick.getRawAxis(Constants.RIGHT_X_AXIS) * Constants.TURN_MULT;
 
         // Quick maths to get left and right
         double left = speed + turn;
