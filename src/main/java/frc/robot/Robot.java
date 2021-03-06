@@ -4,12 +4,16 @@
 
 package frc.robot;
 
+import javax.swing.border.SoftBevelBorder;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.RunFlywheel;
+import frc.robot.commands.ShootCell;
 import frc.robot.commands.TestRollFunnel;
 import frc.robot.commands.TestRollTower;
 import frc.robot.commands.TestRunFlywheel;
@@ -33,6 +37,7 @@ public class Robot extends TimedRobot {
 
     // Commands:
     private ArcadeDrive arcadeDrive;
+    private ShootCell shootCell;
 
     // OI:
     public static Joystick joystick = new Joystick(Constants.JOYSTICK_PORT);
@@ -97,6 +102,8 @@ public class Robot extends TimedRobot {
         // drivetrain.resetEncoder();
         // arcadeDrive = new ArcadeDrive();
         // arcadeDrive.schedule();
+        shootCell = new ShootCell();
+        shootCell.schedule();
 
         intakeButton.toggleWhenPressed(new TestRunIntake());
         funnelButton.toggleWhenPressed(new TestRollFunnel());

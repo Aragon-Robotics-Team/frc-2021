@@ -29,6 +29,9 @@ public final class Constants {
 
     public static final int JOYSTICK_PORT = 4;
 
+    public static final int LEFT_X_AXIS = 1;
+    public static final int RIGHT_X_AXIS = 4;
+
     public static final double SPEED_MULT = 0.6;
     public static final double TURN_MULT = 0.3;
 
@@ -133,13 +136,19 @@ public final class Constants {
     public static final double TOWER_SPEED = 0.5;
     public static final double FOUR = 4.0;
 
+    // the wheel flys
     public static final int FLY_MOTOR_PORT = 5;
     public static final int FLY_MOTOR_PORT_SLAVE = 7;
     public static final double FLY_VOLTAGE = 0.6;
+    public static final double FLY_TRIGGER_CONSTANT = 0.8;
+    public static final int TRIGGER_AXIS = 3;
+    
     //Fun-elle
     public static final int LEFT_FUNNEL_PORTS = 6;
     public static final int RIGHT_FUNNEL_PORTS = 7;
     public static final double FUNNEL_SPEED = 0.7;
+
+
 
     /*
     Button Layout: https://lh3.googleusercontent.com/proxy/4yxUw9HDilB3aXxwCBah5cEqYzxUmfjy8SinOk6YDfjythu9zwu0d1L2G3VlhRRYZNajZn8tlqefoYg066u8VogdlhkxIhQerXLhNC6UfKqipMiXQ9LEgrzOlI8CB700HRklZMxHS5dCVwnkp2zQ0Q
