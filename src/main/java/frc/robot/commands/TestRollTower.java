@@ -5,6 +5,8 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
+import frc.robot.Robot;
 import frc.robot.subsystems.shooter.Hopper;
 
 public class TestRollTower extends CommandBase {
@@ -17,7 +19,12 @@ public class TestRollTower extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Hopper.tower.setIn();
+    double triggerVal = Robot.joystick.getRawAxis(Constants.TRIGGER_AXIS);
+    
+    if(triggerVal > 0.1) {
+      Hopper.tower.setIn();
+    }
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
