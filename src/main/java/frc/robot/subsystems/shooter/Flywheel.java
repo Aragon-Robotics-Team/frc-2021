@@ -37,8 +37,22 @@ public class Flywheel extends SubsystemBase {
     flyMotorMaster.set(TalonSRXControlMode.PercentOutput, triggerInput);
   }
 
-  public void setAtRPM(int rpm) {
+  public final double getRPM() {
+    return (flyMotorMaster.getSelectedSensorVelocity() * 10.0 * 1.0/4096.0) * 60.0;
+  }
+  
+  public void setAtRPM(double rpm) {
     // rpm = how does one do this
+    /*
+    seqCommandGroup:
+
+      Initialize:
+      setAtRPM(100000)
+      isFinished:
+      return getRPM() > k;
+
+      Do other stuff and turn off motors
+    */
   }
 
   @Override
