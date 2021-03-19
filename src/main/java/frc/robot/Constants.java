@@ -142,6 +142,9 @@ public final class Constants {
     public static final double FLY_VOLTAGE = 0.6;
     public static final double FLY_TRIGGER_CONSTANT = 0.8;
     public static final int TRIGGER_AXIS = 3;
+    public static final double MAX_RPM = 6000;
+    public static final double ENCODER_RES = 4096.0;
+    public static final double GEAR_RATIO = 1.0;
     
     //Fun-elle
     public static final int LEFT_FUNNEL_PORTS = 6;
@@ -163,6 +166,8 @@ public final class Constants {
     public static final int FUNNEL_BUTTON = 2;
     public static final int TOWER_BUTTON = 3;
     public static final int FLYWHEEL_BUTTON = 4;
-    public static final int HOOD_IN_BUTTON = 5;
-    public static final int HOOD_OUT_BUTTON = 7;
+    // public static final int HOOD_IN_BUTTON = 5;
+    // public static final int HOOD_OUT_BUTTON = 7;
+    public static final int SHOOT_CELL_BUTTON = 7;
+    public static final int STOP_HOPP_AND_ROLL_BUTTON = 7; //turns off flywheel and hopper in ShootCell
 }

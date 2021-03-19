@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
@@ -11,6 +12,9 @@ import frc.robot.subsystems.shooter.Shooter;
 
 public class RunFlywheel extends CommandBase {
   /** Creates a new RunFlywheel. */
+  private double initTime;
+  private double desiredRPM;
+
   public RunFlywheel() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Shooter.flywheel);
@@ -18,25 +22,27 @@ public class RunFlywheel extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    initTime = Timer.getFPGATimestamp();
+    desiredRPM = 6000;
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double speed = Robot.joystick.getRawAxis(Constants.TRIGGER_AXIS) * Constants.FLY_TRIGGER_CONSTANT;
+    double voltage = 0.01 + 0.01 * (Timer.getFPGATimestamp() - initTime);
 
-    Shooter.flywheel.setOnTrigger(speed);
+    Shooter.flywheel.setVolt(voltage);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Shooter.flywheel.setOff();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return Shooter.flywheel.getRPM() >= desiredRPM;
   }
 }

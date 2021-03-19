@@ -46,8 +46,9 @@ public class Robot extends TimedRobot {
     public Button funnelButton = new JoystickButton(joystick, Constants.FUNNEL_BUTTON);
     public Button towerButton = new JoystickButton(joystick, Constants.TOWER_BUTTON);
     public Button flywheelButton = new JoystickButton(joystick, Constants.FLYWHEEL_BUTTON);
-    public Button hoodInButton = new JoystickButton(joystick, Constants.HOOD_IN_BUTTON);
-    public Button hoodOutButton = new JoystickButton(joystick, Constants.HOOD_OUT_BUTTON);
+    // public Button hoodInButton = new JoystickButton(joystick, Constants.HOOD_IN_BUTTON);
+    // public Button hoodOutButton = new JoystickButton(joystick, Constants.HOOD_OUT_BUTTON);
+
     /**
      * This function is run when the robot is first started up and should be used
      * for any initialization code.
@@ -108,9 +109,14 @@ public class Robot extends TimedRobot {
         intakeButton.toggleWhenPressed(new TestRunIntake());
         funnelButton.toggleWhenPressed(new TestRollFunnel());
         towerButton.toggleWhenPressed(new TestRollTower());
-        flywheelButton.toggleWhenPressed(new TestRunFlywheel());
+        // flywheelButton.toggleWhenPressed(new TestRunFlywheel());
+        
+        /** 
+        testRunFlywheel = new TestRunFlywheel();
+        testRunFlywheel.schedule();
         hoodInButton.whenPressed(Shooter.hood.hoodIn());
         hoodOutButton.whenPressed(Shooter.hood.hoodOut());
+        **/
     }
 
     /** This function is called periodically during operator control. */

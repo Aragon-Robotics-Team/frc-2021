@@ -29,6 +29,10 @@ public class Flywheel extends SubsystemBase {
     flyMotorMaster.set(TalonSRXControlMode.PercentOutput, Constants.FLY_VOLTAGE);
   }
 
+  public void setVolt(double flyVoltage) {
+    flyMotorMaster.set(TalonSRXControlMode.PercentOutput, flyVoltage);
+  }
+
   public void setOff() {
     flyMotorMaster.set(TalonSRXControlMode.PercentOutput, 0);
   }
@@ -38,7 +42,7 @@ public class Flywheel extends SubsystemBase {
   }
 
   public final double getRPM() {
-    return (flyMotorMaster.getSelectedSensorVelocity() * 10.0 * 1.0/4096.0) * 60.0;
+    return (flyMotorMaster.getSelectedSensorVelocity() * (Constants.MAX_RPM / 600) * Constants.ENCODER_RES/Constants.GEAR_RATIO) * 60.0;
   }
   
   public void setAtRPM(double rpm) {
@@ -59,4 +63,4 @@ public class Flywheel extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
-}
+};
