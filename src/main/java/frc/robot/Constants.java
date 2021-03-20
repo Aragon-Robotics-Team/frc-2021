@@ -168,6 +168,9 @@ public final class Constants {
     public static final int FLYWHEEL_BUTTON = 4;
     // public static final int HOOD_IN_BUTTON = 5;
     // public static final int HOOD_OUT_BUTTON = 7;
-    public static final int SHOOT_CELL_BUTTON = 7;
+    public static final int SHOOT_CELL_BUTTON = 5;
     public static final int STOP_HOPP_AND_ROLL_BUTTON = 7; //turns off flywheel and hopper in ShootCell
+    public static final int START_SHOOT_BUTTON = 8;
+    public static final int TEST_FLYWHEEL_DOWN = 9;
+    public static final int TEST_FLYWHEEL_UP = 10;
 }

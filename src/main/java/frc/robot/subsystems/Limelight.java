@@ -46,4 +46,16 @@ public class Limelight extends SubsystemBase {
     // Formula: tan(a1 + a2) = (h2 - h1) / d
     return (Constants.TARGET_HEIGHT - Constants.MOUNTING_HEIGHT) / Math.tan(Constants.MOUNTING_ANGLE + ty);
   }
+
+  public double getEstimatedRPM() {
+    // Use estimated distance to get RPM - to be implemented via map/formula when we get values
+    /*
+    Dist | RPM
+    10ft | 6000
+    12ft | 6500
+    14ft | 7200
+    What is 11? Estimate would be 6250 (Would use estimate if clear formula cannot be found for curve)
+    */
+    return getEstimatedDistance();
+  }
 }
