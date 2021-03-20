@@ -46,6 +46,7 @@ public class Robot extends TimedRobot {
     public Button funnelButton = new JoystickButton(joystick, Constants.FUNNEL_BUTTON);
     public Button towerButton = new JoystickButton(joystick, Constants.TOWER_BUTTON);
     public Button flywheelButton = new JoystickButton(joystick, Constants.FLYWHEEL_BUTTON);
+    public Button startShootButton = new JoystickButton(joystick, Constants.START_SHOOT_BUTTON);
     // public Button hoodInButton = new JoystickButton(joystick, Constants.HOOD_IN_BUTTON);
     // public Button hoodOutButton = new JoystickButton(joystick, Constants.HOOD_OUT_BUTTON);
 
@@ -103,9 +104,7 @@ public class Robot extends TimedRobot {
         // drivetrain.resetEncoder();
         // arcadeDrive = new ArcadeDrive();
         // arcadeDrive.schedule();
-        shootCell = new ShootCell();
-        shootCell.schedule();
-
+        startShootButton.whenPressed(new ShootCell());
         intakeButton.toggleWhenPressed(new TestRunIntake());
         funnelButton.toggleWhenPressed(new TestRollFunnel());
         towerButton.toggleWhenPressed(new TestRollTower());
