@@ -14,6 +14,6 @@ public class ShootCell extends SequentialCommandGroup {
   public ShootCell() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new FindGoal(), new RunFlywheel(), new ControlHopper());
+    addCommands(new FindGoal(), new RunFlywheel(), new ControlHopper(), new RampDownFlywheel());
   }
 }

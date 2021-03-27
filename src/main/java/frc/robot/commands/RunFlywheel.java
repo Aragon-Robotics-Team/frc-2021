@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 public class RunFlywheel extends CommandBase {
+  public static double endVoltage;
   /** Creates a new RunFlywheel. */
   private double initTime;
   private double desiredRPM;
@@ -46,6 +47,7 @@ public class RunFlywheel extends CommandBase {
 
     double voltage = 0.1 + 0.01 * (Timer.getFPGATimestamp() - initTime);
 
+    endVoltage = voltage;
     Shooter.flywheel.setVolt(voltage);
 
     System.out.println("VOLTAGE: " + voltage);

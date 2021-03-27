@@ -43,7 +43,6 @@ public class ControlHopper extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Shooter.flywheel.setOff();
     Hopper.funnel.setZero();
     Hopper.tower.setZero();
   }
