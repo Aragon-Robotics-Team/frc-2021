@@ -21,7 +21,7 @@ public class RampDownFlywheel extends CommandBase {
   @Override
   public void initialize() {
     initTime = Timer.getFPGATimestamp();
-    desiredRPM = 100; // low enough that we can immediately turn flywheel off after it ramps down to this rpm
+    desiredRPM = 500; // low enough that we can immediately turn flywheel off after it ramps down to this rpm
   }
 
 
