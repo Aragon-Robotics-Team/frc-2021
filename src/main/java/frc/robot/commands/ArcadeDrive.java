@@ -31,7 +31,7 @@ public class ArcadeDrive extends CommandBase {
         Robot.drivetrain.setLeftMotor(left);
         Robot.drivetrain.setRightMotor(right);
 
-        Robot.drivetrain.checkMotorOutput();
+        //Robot.drivetrain.checkMotorOutput();
     }
 
     // Make this return true when this Command no longer needs to run execute()
