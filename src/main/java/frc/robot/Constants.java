@@ -142,7 +142,7 @@ public final class Constants {
     public static final double FLY_VOLTAGE = 0.6;
     public static final double FLY_TRIGGER_CONSTANT = 0.8;
     public static final int TRIGGER_AXIS = 3;
-    public static final double MAX_RPM = 6000;
+    public static final double MAX_RPM = 5000;
     public static final double ENCODER_RES = 4096.0;
     public static final double GEAR_RATIO = 1.0;
     

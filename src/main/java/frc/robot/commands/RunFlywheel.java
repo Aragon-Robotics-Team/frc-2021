@@ -31,7 +31,7 @@ public class RunFlywheel extends CommandBase {
   @Override
   public void initialize() {
     initTime = Timer.getFPGATimestamp();
-    desiredRPM = 6000; //For shooting tests, change RPM
+    desiredRPM = 4000; //For shooting tests, change RPM
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -44,9 +44,12 @@ public class RunFlywheel extends CommandBase {
       desiredRPM -= 50;
     }
 
-    double voltage = 0.01 + 0.01 * (Timer.getFPGATimestamp() - initTime);
+    double voltage = 0.1 + 0.01 * (Timer.getFPGATimestamp() - initTime);
 
     Shooter.flywheel.setVolt(voltage);
+
+    System.out.println("VOLTAGE: " + voltage);
+    System.out.println("RPM: " + Shooter.flywheel.getRPM());
   }
 
   // Called once the command ends or is interrupted.
