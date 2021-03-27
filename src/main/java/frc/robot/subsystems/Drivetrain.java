@@ -27,7 +27,7 @@ public class Drivetrain extends SubsystemBase {
     final SpeedControllerGroup m_leftMotors = new SpeedControllerGroup(leftMotorMaster, leftMotorSlave);
     final SpeedControllerGroup m_rightMotors = new SpeedControllerGroup(rightMotorMaster, rightMotorSlave);
 
-    final DifferentialDrive m_drive = new DifferentialDrive(leftMotorMaster, rightMotorMaster);
+    //final DifferentialDrive m_drive = new DifferentialDrive(leftMotorMaster, rightMotorMaster);
 
     // private final Encoder m_leftEncoder = new
     // Encoder(Constants.kLeftEncoderPorts[0], Constants.kLeftEncoderPorts[1],
