@@ -42,7 +42,7 @@ public class Flywheel extends SubsystemBase {
   }
 
   public final double getRPM() {
-    return (flyMotorMaster.getSelectedSensorVelocity() * (Constants.MAX_RPM / 600) * Constants.ENCODER_RES/Constants.GEAR_RATIO) * 60.0;
+    return (-(flyMotorMaster.getSelectedSensorVelocity()) * 5 * Constants.GEAR_RATIO/Constants.ENCODER_RES) * 60.0;
   }
   
   public void setAtRPM(double rpm) {
