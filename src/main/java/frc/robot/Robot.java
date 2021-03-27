@@ -102,8 +102,8 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopInit() {
         // drivetrain.resetEncoder();
-        // arcadeDrive = new ArcadeDrive();
-        // arcadeDrive.schedule();
+        arcadeDrive = new ArcadeDrive();
+        arcadeDrive.schedule();
         startShootButton.whenPressed(new ShootCell());
         intakeButton.toggleWhenPressed(new TestRunIntake());
         funnelButton.toggleWhenPressed(new TestRollFunnel());
