@@ -4,14 +4,15 @@ Main repository for the Aragon Robotics (840) FRC 2021 build season
 ## Programming Team Members (the only important ones):
 
 - Joseph 
-- Satvik
 - Sannie
 - Thomas - the banjo-kazooie guy and links awakening guy (but again)
+- Satvik
 - Luke
 - Roshi - Absent today
 - Hannah
 - Valerie
 - Sarah
+- Andre
 
 ## FAQ
 
