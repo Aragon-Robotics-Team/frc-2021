@@ -5,8 +5,8 @@ Main repository for the Aragon Robotics (840) FRC 2021 build season
 
 - Joseph 
 - Sannie
+- Thomas - the banjo-kazooie guy and links awakening guy (but again)
 - Satvik
-- Thomas - the banjo-kazooie guy
 - Luke
 - Roshi - Absent today
 - Hannah
