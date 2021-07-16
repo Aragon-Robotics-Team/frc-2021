@@ -12,6 +12,7 @@ Main repository for the Aragon Robotics (840) FRC 2021 build season
 - Hannah
 - Valerie
 - Sarah
+- Neel
 - Andre
 
 ## FAQ
