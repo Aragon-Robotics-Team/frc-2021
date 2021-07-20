@@ -24,12 +24,9 @@ public class RampDownFlywheel extends CommandBase {
     @Override
     public void initialize() {
         initTime = Timer.getFPGATimestamp();
-        if (Shooter.flywheel.shootIteration == 2) {
-            desiredRPM = 3750;
-        } else {
-            desiredRPM = 750; // low enough that we can immediately turn flywheel off after it ramps down to
-            // this rpm
-        }
+        desiredRPM = 750;
+        // low enough that we can immediately turn flywheel off after it ramps down to
+        // this rpm
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -38,19 +35,19 @@ public class RampDownFlywheel extends CommandBase {
         double voltage;
 
         if (Shooter.flywheel.shootIteration <= 2) {
-            voltage = 0.1 + 0.02 * (Timer.getFPGATimestamp() - initTime);
+            voltage = 0.1 + 0.09 * (Timer.getFPGATimestamp() - initTime);
 
             Shooter.flywheel.setVolt(RunFlywheel.endVoltage - voltage);
             System.out.println("VOLTAGE: " + (RunFlywheel.endVoltage - voltage));
 
             downEndVoltage = (RunFlywheel.endVoltage - voltage);
         } else if (Shooter.flywheel.shootIteration == 3) {
-            voltage = 0.1 + 0.05 * (Timer.getFPGATimestamp() - initTime);
+            voltage = 0.1 + 0.09 * (Timer.getFPGATimestamp() - initTime);
 
             Shooter.flywheel.setVolt(RunFlywheelTwo.secondEndVoltage - voltage);
             System.out.println("VOLTAGE 2: " + (RunFlywheelTwo.secondEndVoltage - voltage));
         } else {
-            voltage = 0.1 + 0.05 * (Timer.getFPGATimestamp() - initTime);
+            voltage = 0.1 + 0.09 * (Timer.getFPGATimestamp() - initTime);
 
             Shooter.flywheel.setVolt(RunFlywheelThree.thirdEndVoltage - voltage);
             System.out.println("VOLTAGE 3: " + (RunFlywheelThree.thirdEndVoltage - voltage));
@@ -62,13 +59,9 @@ public class RampDownFlywheel extends CommandBase {
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        if (Shooter.flywheel.shootIteration == 2) {
-
-        } else {
-            System.out.println("Shooter off");
-            Shooter.flywheel.setOff();
-            Shooter.flywheel.shootIteration = 1;
-        }
+        System.out.println("Shooter off");
+        Shooter.flywheel.setOff();
+        Shooter.flywheel.shootIteration = 1;
     }
 
     // Returns true when the command should end.
