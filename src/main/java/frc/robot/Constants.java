@@ -30,7 +30,7 @@ public final class Constants {
     public static final int JOYSTICK_PORT = 4;
 
     public static final int LEFT_X_AXIS = 1;
-    public static final int RIGHT_X_AXIS = 4;
+    public static final int RIGHT_X_AXIS = 2;
 
     public static final double SPEED_MULT = 0.25;
     public static final double TURN_MULT = 0.25;

@@ -12,24 +12,24 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Roller extends SubsystemBase {
-  private CANSparkMax motor;
+    private CANSparkMax motor;
 
-  public Roller() {
-    motor = new CANSparkMax(Constants.ROLLER_MOTOR, MotorType.kBrushless);
+    public Roller() {
+        motor = new CANSparkMax(Constants.ROLLER_MOTOR, MotorType.kBrushless);
 
-    motor.setInverted(true);
+        motor.setInverted(true);
 
-    motor.setOpenLoopRampRate(Constants.RAMP_TIME);
-    motor.setClosedLoopRampRate(Constants.RAMP_TIME);
+        motor.setOpenLoopRampRate(Constants.RAMP_TIME);
+        motor.setClosedLoopRampRate(Constants.RAMP_TIME);
 
-    motor.setIdleMode(IdleMode.kCoast);
-  }
+        motor.setIdleMode(IdleMode.kCoast);
+    }
 
-  public void setOn() {
-    motor.setVoltage(Constants.VOLTS_FULL);
-  }
+    public void setOn() {
+        motor.setVoltage(Constants.VOLTS_FULL);
+    }
 
-  public void setOff() {
-    motor.setVoltage(0);
-  }
+    public void setOff() {
+        motor.setVoltage(0);
+    }
 }

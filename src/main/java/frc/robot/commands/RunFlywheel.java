@@ -18,6 +18,8 @@ public class RunFlywheel extends CommandBase {
     private double initTime;
     private double desiredRPM;
     private double voltage = 0;
+    private double switchVoltage;
+    private boolean hasSwitched = false;
 
     private boolean quitRamp = false;
 
@@ -39,7 +41,7 @@ public class RunFlywheel extends CommandBase {
     public void initialize() {
         initTime = Timer.getFPGATimestamp();
         if (Shooter.flywheel.shootIteration == 1) {
-            desiredRPM = 4500;
+            desiredRPM = 4000;
         } else if (Shooter.flywheel.shootIteration == 2) {
             desiredRPM = 4250;
         } else if (Shooter.flywheel.shootIteration == 3) {
@@ -62,13 +64,58 @@ public class RunFlywheel extends CommandBase {
             desiredRPM = 4250;
         }
 
-        if (Shooter.flywheel.shootIteration == 1) {
-            voltage = 0.1 + 0.09 * (Timer.getFPGATimestamp() - initTime);
-        } else if (Shooter.flywheel.shootIteration > 1) {
-            voltage = 0.1 + 0.02 * (Timer.getFPGATimestamp() - initTime);
+        if (Math.abs(Shooter.flywheel.getRPM() - desiredRPM) <= 5) {
+            switchVoltage = voltage;
+            initTime = Timer.getFPGATimestamp();
+            System.out.println("Timer reset!");
+            hasSwitched = true;
+        }
+        if (hasSwitched == false) {
+            if (Shooter.flywheel.getRPM() < desiredRPM) {
+                if (Shooter.flywheel.shootIteration >= 1) {
+                    voltage = 0.1 + 0.01 * (Timer.getFPGATimestamp() - initTime);
+                    // } else if (Shooter.flywheel.shootIteration > 1) {
+                    // voltage = 0.1 + 0.02 * (Timer.getFPGATimestamp() - initTime);
+                } else {
+                    System.out.println("Shoot Iteration is wrong!");
+                    quitRamp = true;
+                }
+            } else if (Shooter.flywheel.getRPM() > desiredRPM) {
+                if (Shooter.flywheel.shootIteration >= 1) {
+                    voltage = 0.1 - 0.01 * (Timer.getFPGATimestamp() - initTime);
+                    // } else if (Shooter.flywheel.shootIteration > 1) {
+                    // voltage = 0.1 + 0.02 * (Timer.getFPGATimestamp() - initTime);
+                } else {
+                    System.out.println("Shoot Iteration is wrong!");
+                    quitRamp = true;
+                }
+            } else {
+                System.out.println("This message should not print");
+                voltage = 0;
+            }
         } else {
-            System.out.println("Shoot Iteration is wrong!");
-            quitRamp = true;
+            if (Shooter.flywheel.getRPM() < desiredRPM) {
+                if (Shooter.flywheel.shootIteration >= 1) {
+                    voltage = switchVoltage + 0.01 * (Timer.getFPGATimestamp() - initTime);
+                    // } else if (Shooter.flywheel.shootIteration > 1) {
+                    // voltage = 0.1 + 0.02 * (Timer.getFPGATimestamp() - initTime);
+                } else {
+                    System.out.println("Shoot Iteration is wrong!");
+                    quitRamp = true;
+                }
+            } else if (Shooter.flywheel.getRPM() > desiredRPM) {
+                if (Shooter.flywheel.shootIteration >= 1) {
+                    voltage = switchVoltage - 0.01 * (Timer.getFPGATimestamp() - initTime);
+                    // } else if (Shooter.flywheel.shootIteration > 1) {
+                    // voltage = 0.1 + 0.02 * (Timer.getFPGATimestamp() - initTime);
+                } else {
+                    System.out.println("Shoot Iteration is wrong!");
+                    quitRamp = true;
+                }
+            } else {
+                System.out.println("This message should not print");
+                voltage = 0;
+            }
         }
 
         endVoltage = voltage;
@@ -88,6 +135,6 @@ public class RunFlywheel extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return Shooter.flywheel.getRPM() >= desiredRPM || stopButton.get() || quitRamp;
+        return /* Shooter.flywheel.getRPM() >= desiredRPM || */stopButton.get() || quitRamp;
     }
 }
