@@ -81,7 +81,7 @@ public class RunFlywheel extends CommandBase {
         //     rampDampener = 0;
         // }
 
-        if (hasSwitched == fsalse) {
+        if (hasSwitched == false) {
             if (Shooter.flywheel.getRPM() < desiredRPM) {
                 if (Shooter.flywheel.shootIteration >= 1) {
                     voltage = 0.1 + voltageIncrement * (Timer.getFPGATimestamp() - initTime) - rampDampener;
