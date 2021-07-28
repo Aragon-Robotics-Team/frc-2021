@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
@@ -16,10 +17,12 @@ public class RunFlywheel extends CommandBase {
     public static double endVoltage;
     /** Creates a new RunFlywheel. */
     private double initTime;
-    private double desiredRPM;
+    public static double desiredRPM;
     private double voltage = 0;
     private double switchVoltage;
     private boolean hasSwitched = false;
+    private double voltageIncrement = 0.05;
+    private double rampDampener = 0;
 
     private boolean quitRamp = false;
 
@@ -64,16 +67,24 @@ public class RunFlywheel extends CommandBase {
             desiredRPM = 4250;
         }
 
-        if (Math.abs(Shooter.flywheel.getRPM() - desiredRPM) <= 5) {
+        if (Math.abs(Shooter.flywheel.getRPM() - desiredRPM) <= 35
+                || (hasSwitched == false && Shooter.flywheel.getRPM() > desiredRPM)) {
             switchVoltage = voltage;
             initTime = Timer.getFPGATimestamp();
-            System.out.println("Timer reset!");
+            // System.out.println("Timer reset!");
             hasSwitched = true;
         }
-        if (hasSwitched == false) {
+
+        // if (Math.abs(Shooter.flywheel.getRPM() - desiredRPM) <= 100) {
+        //     rampDampener = 0.03 * (Timer.getFPGATimestamp() - initTime);
+        // } else {
+        //     rampDampener = 0;
+        // }
+
+        if (hasSwitched == fsalse) {
             if (Shooter.flywheel.getRPM() < desiredRPM) {
                 if (Shooter.flywheel.shootIteration >= 1) {
-                    voltage = 0.1 + 0.01 * (Timer.getFPGATimestamp() - initTime);
+                    voltage = 0.1 + voltageIncrement * (Timer.getFPGATimestamp() - initTime) - rampDampener;
                     // } else if (Shooter.flywheel.shootIteration > 1) {
                     // voltage = 0.1 + 0.02 * (Timer.getFPGATimestamp() - initTime);
                 } else {
@@ -82,7 +93,7 @@ public class RunFlywheel extends CommandBase {
                 }
             } else if (Shooter.flywheel.getRPM() > desiredRPM) {
                 if (Shooter.flywheel.shootIteration >= 1) {
-                    voltage = 0.1 - 0.01 * (Timer.getFPGATimestamp() - initTime);
+                    voltage = 0.1 - voltageIncrement * (Timer.getFPGATimestamp() - initTime) - rampDampener;
                     // } else if (Shooter.flywheel.shootIteration > 1) {
                     // voltage = 0.1 + 0.02 * (Timer.getFPGATimestamp() - initTime);
                 } else {
@@ -96,7 +107,7 @@ public class RunFlywheel extends CommandBase {
         } else {
             if (Shooter.flywheel.getRPM() < desiredRPM) {
                 if (Shooter.flywheel.shootIteration >= 1) {
-                    voltage = switchVoltage + 0.01 * (Timer.getFPGATimestamp() - initTime);
+                    voltage = switchVoltage + voltageIncrement * (Timer.getFPGATimestamp() - initTime) - rampDampener;
                     // } else if (Shooter.flywheel.shootIteration > 1) {
                     // voltage = 0.1 + 0.02 * (Timer.getFPGATimestamp() - initTime);
                 } else {
@@ -105,7 +116,7 @@ public class RunFlywheel extends CommandBase {
                 }
             } else if (Shooter.flywheel.getRPM() > desiredRPM) {
                 if (Shooter.flywheel.shootIteration >= 1) {
-                    voltage = switchVoltage - 0.01 * (Timer.getFPGATimestamp() - initTime);
+                    voltage = switchVoltage - voltageIncrement * (Timer.getFPGATimestamp() - initTime) - rampDampener;
                     // } else if (Shooter.flywheel.shootIteration > 1) {
                     // voltage = 0.1 + 0.02 * (Timer.getFPGATimestamp() - initTime);
                 } else {
@@ -121,15 +132,16 @@ public class RunFlywheel extends CommandBase {
         endVoltage = voltage;
         Shooter.flywheel.setVolt(voltage);
 
-        System.out.println("VOLTAGE: " + voltage);
-        System.out.println("RPM: " + Shooter.flywheel.getRPM());
-        System.out.println("DESIRED RPM: " + desiredRPM);
+        SmartDashboard.putNumber("VOLTAGE", voltage);
+        SmartDashboard.putNumber("RPM", Shooter.flywheel.getRPM());
+        SmartDashboard.putNumber("DESIRED RPM", desiredRPM);
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
         System.out.println("Moving to ControlHopper. Running at " + Shooter.flywheel.getRPM() + " RPM");
+        hasSwitched = false;
     }
 
     // Returns true when the command should end.

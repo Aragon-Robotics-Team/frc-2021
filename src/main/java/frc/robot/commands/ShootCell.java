@@ -14,10 +14,10 @@ public class ShootCell extends SequentialCommandGroup {
     public ShootCell() {
         // Add your commands in the addCommands() call, e.g.
         // addCommands(new FooCommand(), new BarCommand());
-        addCommands(/* new FindGoal() */new RunFlywheel(), new ControlHopper(),
-                /*
-                 * new RampDownFlywheel(), new ControlHopper(), new RunFlywheelThree(), new
-                 * ControlHopper(),
-                 */ new RampDownFlywheel());
+        addCommands(/*
+                     * new FindGoal() new RunFlywheel(), new ControlHopper(), /* new
+                     * RampDownFlywheel(), new ControlHopper(), new RunFlywheelThree(), new
+                     * ControlHopper(),
+                     */new StartShoot(), new RampDownFlywheel());
     }
 }

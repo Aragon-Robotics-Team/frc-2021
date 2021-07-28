@@ -18,9 +18,9 @@ public class ControlHopper extends CommandBase {
 
     public ControlHopper() {
         // Use addRequirements() here to declare subsystem dependencies.
-        addRequirements(Hopper.tower, Hopper.funnel, Shooter.flywheel);
+        addRequirements(Hopper.tower, Hopper.funnel);
         shootButton = new JoystickButton(Robot.joystick, Constants.SHOOT_CELL_BUTTON);
-        offButton = new JoystickButton(Robot.joystick, Constants.STOP_HOPP_AND_ROLL_BUTTON);
+        offButton = new JoystickButton(Robot.joystick, Constants.FUNNEL_BUTTON);
     }
 
     // Called when the command is initially scheduled.
@@ -32,14 +32,18 @@ public class ControlHopper extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        if (shootButton.get()) {
-            Hopper.tower.setIn();
-            Hopper.funnel.setReverse();
-        } else {
+        if (Math.abs(RunFlywheel.desiredRPM - Shooter.flywheel.getRPM()) <= 1000)
+            if (shootButton.get()) {
+                Hopper.tower.setIn();
+                Hopper.funnel.setReverse();
+            } else {
+                Hopper.tower.setZero();
+                Hopper.funnel.setZero();
+            }
+        else {
             Hopper.tower.setZero();
             Hopper.funnel.setZero();
         }
-
         // System.out.println("RPM: " + Shooter.flywheel.getRPM());
     }
 
