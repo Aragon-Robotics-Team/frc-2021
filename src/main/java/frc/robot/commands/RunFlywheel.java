@@ -44,7 +44,7 @@ public class RunFlywheel extends CommandBase {
     public void initialize() {
         initTime = Timer.getFPGATimestamp();
         if (Shooter.flywheel.shootIteration == 1) {
-            desiredRPM = 4000;
+            desiredRPM = 4100;
         } else if (Shooter.flywheel.shootIteration == 2) {
             desiredRPM = 4250;
         } else if (Shooter.flywheel.shootIteration == 3) {
@@ -76,9 +76,9 @@ public class RunFlywheel extends CommandBase {
         }
 
         // if (Math.abs(Shooter.flywheel.getRPM() - desiredRPM) <= 100) {
-        //     rampDampener = 0.03 * (Timer.getFPGATimestamp() - initTime);
+        // rampDampener = 0.03 * (Timer.getFPGATimestamp() - initTime);
         // } else {
-        //     rampDampener = 0;
+        // rampDampener = 0;
         // }
 
         if (hasSwitched == false) {
